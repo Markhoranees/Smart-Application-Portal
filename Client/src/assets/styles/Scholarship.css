@@ -1,0 +1,30 @@
+/* Custom Styles */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-top {
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .pagination .page-link {
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    margin: 0 5px;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #0056b3;
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    background-color: #cccccc;
+    color: #666666;
+  }
