@@ -21,6 +21,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/admin', require('./routes/scraperRoutes'));
 
 // Default route
 app.get('/', (req, res) => {
