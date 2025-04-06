@@ -1,0 +1,57 @@
+.container-joblist {
+  background: url('../image/joblist1.png') center/cover no-repeat;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+
+
+.top-header h3{
+  margin-top: -8rem;
+}
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 350px;
+}
+
+.search-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.job-results {
+  text-align: center;
+  margin: 20px;
+}
+
+.job-card {
+  background: #f9f9f9;
+  padding: 15px;
+  margin: 10px auto;
+  width: 50%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.no-jobs {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}

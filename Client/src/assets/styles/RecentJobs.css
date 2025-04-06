@@ -1,0 +1,150 @@
+.recent-jobs-container {
+    width: 100% !important;
+    /* max-width: 1200px; */
+    margin: auto;
+    padding: 40px 20px;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .job-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  
+  }
+  
+  .job-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .job-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .job-type {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    margin-left: 10px;
+  }
+  
+  .company {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .apply-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 30% !important;
+  }
+  
+  .apply-btn:hover {
+    background: #0056b3;
+  }
+  
+  /* Pagination */
+  .pagination {
+    margin-top: 20px;
+    justify-content: center;
+  }
+  
+  .page {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 5px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+    
+    
+  }
+  
+  .page.active {
+    background: #007bff;
+    color: white;
+  }
+  
+  .page:hover {
+    background: #007bff;
+    color: white;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 8px 16px;
+    border: none;
+    background: #e0e0e0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .tab.active {
+    background: #007bff;
+    color: white;
+  }
+  
+  .tab:hover {
+    background: #007bff;
+    color: white;
+  }
+  
+  .no-jobs {
+    text-align: center;
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .job-card {
+      flex-direction: column;
+      text-align: left;
+      padding: 15px;
+    }
+  
+    .apply-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  

@@ -1,0 +1,221 @@
+
+.contact-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+  
+  /* Flexbox Layout */
+  .contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+ 
+  .contact-form {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Submit Button */
+  .contact-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Contact Image */
+  .contact-image {
+    flex: 1;
+    min-width: 350px;
+    text-align: center;
+ 
+  }
+  
+  .contact-image img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+/* Contact Form Section */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.contact-content {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  gap: 40px;
+}
+
+.contact-form {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.contact-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* Subscribe Section */
+.subscribe-section {
+  background-size: cover;
+  background-position: bottom;
+
+  padding: 80px 20px;
+  color: white;
+  text-align: center;
+  /* margin-top: 50px; */
+  height: 350px;
+}
+
+.subscribe-content {
+  max-width: 600px;
+  margin: auto;
+  /* background: rgba(0, 0, 0, 0.5); */
+  padding: 40px;
+  border-radius: 10px;
+
+}
+
+.subscribe-content h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subscribe-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  
+}
+
+.subscribe-form input {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  width: 70%;
+  font-size: 16px;
+}
+
+.subscribe-form button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.subscribe-form button:hover {
+  background: #218838;
+}
+
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .contact-image img {
+      margin-top: 20px;
+      
+    }
+  }

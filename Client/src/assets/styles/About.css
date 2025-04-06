@@ -1,0 +1,139 @@
+/* About Section */
+.about-section {
+    padding: 80px 0;
+    display: flex;
+    justify-content: center;
+
+  }
+  
+  .about-container {
+    display: flex;
+   
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Left Side - Image */
+  .about-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+  
+  /* Right Side - Text */
+  .about-content {
+    max-width: 500px;
+  }
+  
+  .about-content h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .about-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .about-list {
+    margin-top: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .about-list li {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  /* Team Section */
+  .team-section {
+    text-align: center;
+   
+    
+   
+  }
+  
+
+  .team-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .team-heading {
+    font-size: 38px;
+    font-weight: bold;
+ 
+  }
+  
+  .team-description {
+    color: #666;
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+     }
+
+     .team-members {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; 
+        align-items: center;
+        gap: 20px;
+        max-width: 100%; 
+        margin: 0 auto; 
+        transition: background-color 0.3s ease; 
+        cursor: pointer; 
+    }
+   
+    .team-member {
+        text-align: center;
+        width: 250px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* background: #f9f9f9; */
+        padding: 20px;
+        border-radius: 10px;
+    }
+ 
+    /* Team Member Image */
+    .team-member img {
+        width: 100%; 
+        max-width: 440px;
+        border-radius: 0%;
+        transition: transform 0.3s ease;  
+    }
+  
+  
+  /* Team Member Name */
+  .team-member h4 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+  }
+  
+  /* Team Member Role */
+  .team-member p {
+    font-size: 14px;
+    color: #777;
+  }
+
+
+
+.team-member:hover img {
+    transform: scale(1.05);
+}
+
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .about-image img {
+      max-width: 100%;
+    }
+  }
+  

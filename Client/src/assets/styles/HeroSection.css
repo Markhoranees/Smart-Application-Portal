@@ -1,0 +1,243 @@
+.hero {
+  background: url("../image/bg_2.jpg") no-repeat center center/cover;
+  height: 100vh;
+  width: 100%;
+  position: relative; 
+  top: 0;
+  left: 0;
+  z-index: 10;  
+  display: flex;
+  align-items: left;
+  justify-content: left;  
+  text-align: left; 
+  color: white;
+  padding: 0 5%;
+  padding-top: 90px;
+
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb {
+  position: absolute;
+  top: 200px;
+  left: 90px;
+  font-size: 16px;
+  color: rgb(245, 245, 245);
+}
+
+.breadcrumb-link {
+  color: #1cb4c6;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.breadcrumb-link:hover {
+  color: #fff;
+}
+
+.breadcrumb-active {
+  font-weight: bold;
+  color: white;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding-top: 50px;
+  width: 100%;
+}
+
+
+
+.hero h1 {
+  font-size: 3rem; 
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #1cb4c6;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin: 40px 0 20px;
+  justify-content: left; 
+  flex-wrap: wrap;
+  
+}
+
+.btn {
+  padding: 14px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  /* background: #1cb4c6; */
+  color: white;
+}
+
+.primary-btn {
+  background: #1cb4c6;
+  color: white;
+}
+
+.secondary-btn {
+  background: #1cb4c6;
+  color: white;
+}
+
+.active-btn {
+  background: #1cb4c6;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  flex-wrap: nowrap;
+  justify-content: center;  
+}
+
+.search-bar input,
+.search-bar select {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  min-width: 120px;
+}
+
+.search-btn {
+  background: #1cb4c6;
+
+  color: white;
+  padding: 12px 20px;
+}
+.search-btn :hover{
+  border: 1px solid #1cb4c6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) { 
+  .hero h1 {
+      font-size: 2.5rem;
+  }
+  .hero p {
+      font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {  
+  .hero {
+      justify-content: center;
+      text-align: center;
+      padding: 0 8%;
+      align-items: center;
+      padding-top: 200px;
+    
+  }
+
+  .hero-content {
+      padding-top: 100px;
+  }
+
+  .hero-buttons {
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+  }
+
+  .search-bar {
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+   
+  }
+
+  .search-bar input,
+  .search-bar select {
+      width: 100%;
+      text-align: center;
+      border: 1px solid #ff5722;
+  }
+
+  .hero h1 {
+      font-size: 2rem;
+  }
+
+  .hero p {
+      font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {  
+  .hero {
+      padding: 0 10%;
+      align-items: center;
+      padding-top: 150px;
+  }
+
+  .hero-content {
+      padding-top: 200px;
+  }
+
+  .hero-buttons {
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+  }
+
+  .search-bar {
+      flex-direction: column;
+      width: 100%;
+
+  }
+
+  .search-bar input,
+  .search-bar select {
+      width: 100%;
+      text-align: center;
+      border: 1px solid #ff5722;
+  }
+
+  .hero h1 {
+      font-size: 1.8rem;
+  }
+
+  .hero p {
+      font-size: 1.1rem;
+  }
+}

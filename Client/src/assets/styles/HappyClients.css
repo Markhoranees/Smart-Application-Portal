@@ -1,0 +1,58 @@
+.happy-clients {
+    text-align: center;
+    padding: 60px;
+  }
+  .happy-clients h3{
+    color: #928a8a;
+  }
+  .happy-clients h2{
+    padding-bottom: 30px;
+  }
+  
+  .clients-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .client-card {
+    width: 300px;
+    padding: 20px;
+    background: rgb(193, 192, 190);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .client-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .client-image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-dot {
+    width: 12px;
+    height: 12px;
+    margin: 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .pagination-dot.active {
+    background-color: black;
+    transform: scale(1.2);
+  }
+  

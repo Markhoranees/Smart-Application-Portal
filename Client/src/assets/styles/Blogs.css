@@ -1,0 +1,49 @@
+
+.blog-hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    left: -28rem;
+    top: 8rem;
+    padding-left: 20px;
+}
+
+.breadcrumb-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.breadcrumb-link:hover {
+    color: #ffcc00;
+}
+
+.breadcrumb-active {
+    color: #436eb3;
+}
+

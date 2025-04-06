@@ -1,0 +1,48 @@
+ 
+   .container-jobdetails{
+    background: url("../image/joblist1.png");
+    height: 80vh;
+    width: 100%;
+    text-align: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+   }
+   .top-header h3{
+    padding-top: 100px;
+    color: white;
+   }
+  
+  /* Hover effect for Apply Button */
+  .apply-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .apply-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Hover effect for Job Detail Container */
+  .job-detail-container {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    padding-left: 60px;
+    padding-top: 40px;
+  }
+  
+  .job-detail-container:hover {
+    transform: scale(1.02);
+  }
+  
