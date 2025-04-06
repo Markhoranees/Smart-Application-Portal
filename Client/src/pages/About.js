@@ -19,7 +19,7 @@ const About = () => {
         breadcrumb={
           <nav>
             <Link to="/" className="breadcrumb-link">Home</Link> &gt;
-            <span className="breadcrumb-active"> About</span>
+            <span className="breadcrumb-active"> About us</span>
           </nav>
         }
       />
