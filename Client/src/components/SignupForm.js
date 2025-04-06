@@ -2,18 +2,22 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../features/auth/authSlice";
 import "../assets/styles/Auth.css";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const dispatch = useDispatch();
   const { user, loading, error } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
+    role: "user", // default role
   });
+
   const [errors, setErrors] = useState({});
-  console.log("user", user);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,22 +41,43 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-
-    dispatch(
-      signup({
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        role: "user",
-      })
-    );
+  
+    try {
+      const res = await dispatch(
+        signup({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          role: formData.role,
+        })
+      );
+  
+      if (res.meta.requestStatus === "fulfilled") {
+        navigate("/login");
+      }
+    } catch (err) {
+      console.error("Signup failed:", err);
+    }
   };
+  
 
   return (
     <div className="signup-page">
       <div className="form-content">
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
+           {/* Role selection */}
+           <select
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            className="form-select"
+            required
+          >
+            <option value="user">User</option>
+            <option value="expert">Expert</option>
+          </select>
+
           <input
             type="text"
             name="name"
@@ -94,6 +119,8 @@ const SignupForm = () => {
           {errors.confirmPassword && (
             <p className="error">{errors.confirmPassword}</p>
           )}
+
+         
 
           {error && <p className="error">{error}</p>}
 

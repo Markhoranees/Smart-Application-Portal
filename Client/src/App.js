@@ -13,6 +13,7 @@ import InternshipPage from "./pages/InternshipPage";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Scholarships from "./pages/Scholarships";
+import Dashboard from "./pages/Admin/Dashboard";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/jobdetail" element={<JobDetail/>} />  
         <Route path="/enternships" element={<InternshipPage/>} />  
         <Route path="/scholarships" element={<Scholarships/>} />  
+        <Route path="/admindashboard" element={<Dashboard/>} />  
 
       
       </Routes>

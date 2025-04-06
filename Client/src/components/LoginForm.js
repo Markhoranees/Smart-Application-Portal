@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/auth/authSlice";
 import { Link } from "react-router-dom"; // ✅ import Link
 import "../assets/styles/Auth.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
+
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -29,45 +32,77 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
 
-    dispatch(login({ email: formData.email, password: formData.password }));
+    try {
+      const res = await dispatch(
+        login({
+          email: formData.email,
+          password: formData.password,
+        })
+      );
+
+      if (res.meta.requestStatus === "fulfilled") {
+        const role = user?.role;
+
+        if (role === "admin") {
+          navigate("/admindashboard");
+        } else if (role === "user") {
+          navigate("/userdashboard");
+        } else if (role === "expert") {
+          navigate("/expertdashboard");
+        } 
+      }
+    } catch (err) {
+      console.error("Login failed", err);
+    }
   };
-
+  console.log("user", user);
   return (
-    <div className="form-content">
-      <h2>Job Portal Login</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-gradient" style={{ background: 'linear-gradient(to right, #6a11cb, #2575fc)' }}>
+  <div className="bg-white p-5 rounded-4 shadow" style={{ width: '100%', maxWidth: '400px' }}>
+    <h2 className="text-center mb-4">Job Portal Login</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
         <input
           type="email"
+          className="form-control"
           name="email"
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
           required
         />
-        {errors.email && <p className="error">{errors.email}</p>}
+        {errors.email && <div className="text-danger mt-1">{errors.email}</div>}
+      </div>
 
+      <div className="mb-3">
         <input
           type="password"
+          className="form-control"
           name="password"
           placeholder="Password"
           value={formData.password}
           onChange={handleChange}
           required
         />
-        {error && <p className="error">{error}</p>}
+        {error && <div className="text-danger mt-1">{error}</div>}
+      </div>
 
-        <Link to="/forgot-password">Forgot Password?</Link> 
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
+      <div className="d-flex justify-content-end mb-3">
+        <Link to="/forgot-password" className="text-decoration-none">Forgot Password?</Link>
+      </div>
 
-        <p>
-          Don't have an account? <Link to="/signup">Sign Up</Link>
-        </p>
-      </form>
-    </div>
+      <button type="submit" className="btn btn-primary w-100" disabled={loading} style={{ backgroundColor: '#6a11cb', borderColor: '#6a11cb' }}>
+        {loading ? "Logging in..." : "Login"}
+      </button>
+
+      <p className="text-center mt-3">
+        Don't have an account? <Link to="/signup" className="text-decoration-none" style={{ color: '#6a11cb' }}>Sign Up</Link>
+      </p>
+    </form>
+  </div>
+</div>
+
   );
 };
 

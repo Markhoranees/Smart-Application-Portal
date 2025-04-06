@@ -8,6 +8,14 @@ export const fetchScholarships = createAsyncThunk('scholarships/fetchScholarship
   return response.data.data;
 });
 
+
+export const scrapeScholarships = createAsyncThunk(
+  'scholarships/scrapeScholarships',
+  async () => {
+    const response = await axios.get(`${API_URL}/scrape`); // Adjust API endpoint
+    return response.data.data;
+  }
+);
 const scholarshipsSlice = createSlice({
   name: 'scholarships',
   initialState: {
@@ -26,6 +34,17 @@ const scholarshipsSlice = createSlice({
         state.scholarships = action.payload;
       })
       .addCase(fetchScholarships.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(scrapeScholarships.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(scrapeScholarships.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.scholarships = action.payload;
+      })
+      .addCase(scrapeScholarships.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
