@@ -12,6 +12,7 @@ import JobDetail from "./components/JobDetail";
 import InternshipPage from "./pages/InternshipPage";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
+import Scholarships from "./pages/Scholarships";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
         <Route path="/joblist" element={<Joblist/>} />  
         <Route path="/jobdetail" element={<JobDetail/>} />  
         <Route path="/enternships" element={<InternshipPage/>} />  
+        <Route path="/scholarships" element={<Scholarships/>} />  
+
       
       </Routes>
     </Router>
