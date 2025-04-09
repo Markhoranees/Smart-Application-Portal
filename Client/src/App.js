@@ -14,6 +14,8 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Scholarships from "./pages/Scholarships";
 import Dashboard from "./pages/Admin/Dashboard";
+import UserDashboard from "./User/UserDashboard";
+
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
         <Route path="/enternships" element={<InternshipPage/>} />  
         <Route path="/scholarships" element={<Scholarships/>} />  
         <Route path="/admindashboard" element={<Dashboard/>} />  
+        <Route path="/userdashboard" element={<UserDashboard/>} />  
 
       
       </Routes>

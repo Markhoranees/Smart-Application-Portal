@@ -26,7 +26,7 @@ app.use('/api/admin', require('./routes/scraperRoutes'));
 
 // Default route
 app.get('/', (req, res) => {
-    res.send('API is running...');
+    res.send('API is running...');x
 });
 
 const PORT = process.env.PORT || 5000;

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchScholarships } from '../features/auth/scholarshipsSlice';
 import { Spinner, Card, Button } from 'react-bootstrap';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Scholarships = () => {
   const dispatch = useDispatch();
@@ -24,7 +26,12 @@ const Scholarships = () => {
   console.log("scholarships", scholarships)
 
   return (
-    <div className="container mt-4">
+    <>
+    <Header></Header>
+    <div className='mt-5 p-4'>
+    <h2 className='text-center mt-5'>Welcome To Scholarships </h2>
+    </div>
+    <div className="container mt-5">
       <div className="row">
         {scholarships.map((scholarship) => (
           <div className="col-md-4 mb-3" key={scholarship.link}>
@@ -47,6 +54,8 @@ const Scholarships = () => {
         ))}
       </div>
     </div>
+    <Footer/>
+    </>
   );
 
 }

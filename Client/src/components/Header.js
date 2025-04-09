@@ -79,7 +79,7 @@ const Header = () => {
           <ul className={`dropdown-menu ${activeDropdown === "pages" ? "show" : ""}`}>
             <li><Link to="/scholarships" onClick={closeMenu}>Scholarship</Link></li>
             <li><Link to="/experts" onClick={closeMenu}>Experts</Link></li>
-            <li><Link to="/findjobs" onClick={closeMenu}>Find Jobs</Link></li>
+            {/* <li><Link to="/findjobs" onClick={closeMenu}>Find Jobs</Link></li> */}
           </ul>
         </li>
 

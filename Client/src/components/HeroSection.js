@@ -33,36 +33,6 @@ const HeroSection = ({ showText = true, height = "100vh", breadcrumb,  backgroun
               Find a Candidate
             </button>
           </div>
-
-          {/* Dynamic Search Bar */}
-          <div className="search-bar">
-            {searchType === "job" ? (
-              <>
-                <input type="text" placeholder="Search jobs, scholarships..." />
-                <select>
-                  <option value="">Category</option>
-                  <option value="full-time">Full Time</option>
-                  <option value="part-time">Part Time</option>
-                  <option value="freelancer">Freelancer</option>
-                  <option value="temporary">Temporary</option>
-                  <option value="internship">Internship</option>
-                </select>
-                <input type="text" placeholder="Location (e.g., New York)" />
-              </>
-            ) : (
-              <>
-                <input type="text" placeholder="Search candidate skills..." />
-                <select>
-                  <option value="">Experience Level</option>
-                  <option value="junior">Junior</option>
-                  <option value="mid">Mid-Level</option>
-                  <option value="senior">Senior</option>
-                </select>
-                <input type="text" placeholder="Location (e.g., Remote)" />
-              </>
-            )}
-            <button className="btn search-btn">Search</button>
-          </div>
         </div>
       )}
     </section>

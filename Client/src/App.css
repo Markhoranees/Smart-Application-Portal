@@ -1,0 +1,12 @@
+
+
+.sidebar-link:hover {
+    background-color: #495057; /* Darker background on hover */
+    color: #fff; /* Change text color */
+  }
+
+  #admin-details {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  

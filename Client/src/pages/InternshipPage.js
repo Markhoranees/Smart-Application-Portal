@@ -1,4 +1,3 @@
-import React from "react";
 import "../assets/styles/InternshipPage.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -36,7 +35,7 @@ const InternshipPage = () => {
           <button className="btn get-started">Get Started</button>
         </div>
         <div className="cta">
-          <button className="btn find-internship">Find Your Dream Internship Today!</button>
+          {/* <button className="btn find-internship">Find Your Dream Internship Today!</button> */}
         </div>
       </section>
 
