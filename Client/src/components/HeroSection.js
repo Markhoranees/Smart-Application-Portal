@@ -26,11 +26,11 @@ const HeroSection = ({ showText = true, height = "100vh", breadcrumb,  backgroun
 
           {/* Toggle Buttons */}
           <div className="hero-buttons">
-            <button className={`btn ${searchType === "job" ? "active-btn" : ""}`} onClick={() => setSearchType("job")}>
+            {/* <button className={`btn ${searchType === "job" ? "active-btn" : ""}`} onClick={() => setSearchType("job")}>
               Find Job
-            </button>
-            <button className={`btn ${searchType === "candidate" ? "active-btn" : ""}`} onClick={() => setSearchType("candidate")}>
-              Find a Candidate
+            </button> */}
+            <button className={`btn ${searchType === "candidate" ? "active-btn" : ""}`} onClick={() => setSearchType("job")}>
+              Find a Job
             </button>
           </div>
         </div>

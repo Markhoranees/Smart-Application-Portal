@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import "../assets/styles/PostJobForm.css";
-import Header from "./Header";
-import { Link } from "react-router-dom";
-import HeroSection from "./HeroSection";
-import fromfill from "../assets/image/from_fill.png";
-import Footer from "./Footer";
-
+import "../../assets/styles/PostJobForm.css";
+import HeroSection from "../../components/HeroSection"
 const PostJobForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [showForm, setShowForm] = useState(true);
@@ -18,17 +13,9 @@ const PostJobForm = () => {
 
   return (
     <>
-    <Header/>
-    <HeroSection
-        showText={false}
-        height="70vh"   backgroundImage={fromfill} 
-        breadcrumb={
-          <nav>
-            <Link to="/" className="breadcrumb-link">Home</Link> &gt;
-            <span className="breadcrumb-active"> postjob</span>
-          </nav>
-        }/>
 
+    <HeroSection/>
+       
     <div className="page-container">
     <div className={`form-container ${showForm ? "fade-in" : "fade-out"}`}>
       <button className="close-btn" onClick={() => setShowForm(false)}>✖</button>
@@ -89,7 +76,7 @@ const PostJobForm = () => {
       )}
     </div>
     </div>
-    <Footer/>
+
     </>
   );
 };

@@ -1,9 +1,9 @@
 // LoginForm.js
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../features/auth/authSlice";
+import { login } from "../../features/auth/authSlice";
 import { Link } from "react-router-dom"; // ✅ import Link
-import "../assets/styles/Auth.css";
+import "../../assets/styles/Auth.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {

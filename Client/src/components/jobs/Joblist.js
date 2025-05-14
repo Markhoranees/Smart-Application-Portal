@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import "../assets/styles/Joblist.css";
-import RecentJobs from './RecentJobs';
+import "../../assets/styles/Joblist.css";
+
 
 // Dummy job data (replace with real data from API)
 const jobData = [
@@ -27,7 +25,7 @@ const Joblist = () => {
 
   return (
     <>
-      <Header />
+
 
       {/* Top Section with Background Image */}
       <section className="container-joblist">
@@ -47,22 +45,9 @@ const Joblist = () => {
         </div>
       </section>
 
-      {/* Job Results
-      <section className="job-results">
-        {filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <div key={job.id} className="job-card">
-              <h4>{job.title}</h4>
-              <p>{job.category} - {job.location}</p>
-            </div>
-          ))
-        ) : (
-          <p className="no-jobs">Jobs not found, try another search.</p>
-        )}
-      </section> */}
-        <RecentJobs/>
+   
 
-      <Footer />
+\
     </>
   );
 };

@@ -1,8 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import "../assets/styles/JobDetail.css";
-import Header from "./Header";
-import Footer from "./Footer";
+import "../../assets/styles/JobDetail.css";
+
 
 const JobDetail = () => {
   const { id } = useParams();
@@ -32,7 +31,7 @@ const JobDetail = () => {
 
   return (
     <>
-      <Header />
+
       {/* Top Section with Background Image */}
       <section className="container-jobdetails">
         <div className="top-header">
@@ -74,8 +73,7 @@ const JobDetail = () => {
 
           <button className="apply-btn hover-effect">Apply Now</button>
         </div>
- 
-      <Footer />
+
     </>
   );
 };

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../features/auth/authSlice";
-import "../assets/styles/Auth.css";
+import { signup } from "../../features/auth/authSlice";
+import "../../assets/styles/Auth.css";
 import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   const dispatch = useDispatch();
-  const { user, loading, error } = useSelector((state) => state.auth);
+  const { loading, error } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({

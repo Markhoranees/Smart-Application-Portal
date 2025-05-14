@@ -1,27 +1,18 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/common/Header";
 import HeroSection from "../components/HeroSection";
-import JobFeatures from "../components/JobFeatures";
-import RecentJobs from "../components/RecentJobs";
-import StatsSection from "../components/StatsSection";
-import RecentBlog from "../components/RecentBlog";
-import HappyClients from "../components/HappyClients";
-import Footer from "../components/Footer";
-import HowItWorks from "../components/HowItWorks";
+import JobFeatures from "../components/jobs/JobFeatures";
+import Footer from "../components/common/Footer";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <Header />
       <HeroSection />
-     <JobFeatures/>
-     <HowItWorks/>
-     <RecentJobs/>
-     <StatsSection/>
-     <RecentBlog/>
-     <HappyClients/>
-     <Footer/>
-     
+      <JobFeatures />
+      <Footer />
     </>
   );
 };
+
+export default Home; // ✅ Correctly exporting the Home component

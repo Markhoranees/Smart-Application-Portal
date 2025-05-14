@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../assets/styles/Header.css";
+import "../../assets/styles/Header.css";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -84,8 +84,7 @@ const Header = () => {
         </li>
 
 
-            <li><Link to="/blog" onClick={closeMenu}>Blogs</Link></li>
-            <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+     
 
             <div className="mobile-auth">
               <Link to="/sign" className="btn" onClick={closeMenu}>Sign In</Link>

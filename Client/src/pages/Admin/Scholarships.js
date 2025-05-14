@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchScholarships } from "../../features/auth/scholarshipsSlice";
 import { Card, Button, Spinner, Alert, Badge } from "react-bootstrap";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "../../components/common/Header";
+import Footer from "../../components/common/Footer";
 
 const Scholarships = () => {
   const dispatch = useDispatch();
