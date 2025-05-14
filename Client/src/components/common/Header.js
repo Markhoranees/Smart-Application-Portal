@@ -87,14 +87,14 @@ const Header = () => {
      
 
             <div className="mobile-auth">
-              <Link to="/sign" className="btn" onClick={closeMenu}>Sign In</Link>
+              <Link to="/signIn" className="btn" onClick={closeMenu}>Sign In</Link>
               <Link to="/postjob" className="btn btn-primary" onClick={closeMenu}>Post A Job</Link>
             </div>
           </ul>
         </nav>
 
         <div className="auth-buttons">
-          <Link to="/login" className="btn">Sign In</Link>
+          <Link to="/signIn" className="btn">Sign In</Link>
           <Link to="/postjob" className="btn btn-primary">Post A Job</Link>
         </div>
       </div>

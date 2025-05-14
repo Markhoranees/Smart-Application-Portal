@@ -1,19 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import { ClerkProvider } from "@clerk/clerk-react";
 import App from "./App";
-import { Provider } from "react-redux";
-import { store } from "./store";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Replace with your actual Clerk Publishable Key from the Clerk dashboard
+const clerkPublishableKey = 'pk_test_d2l0dHktcGlnLTQ5LmNsZXJrLmFjY291bnRzLmRldiQ';  // Replace this with your Clerk publishable key
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ClerkProvider publishableKey={clerkPublishableKey}>
+     
+        <App />
+  
+    </ClerkProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
