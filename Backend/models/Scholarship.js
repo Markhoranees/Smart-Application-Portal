@@ -1,10 +1,14 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const scholarshipSchema = new mongoose.Schema({
-  title: String,
-  link: { type: String, unique: true },
-  image: String,
-  date: String,
-});
+const ScholarshipSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  provider: { type: String, required: true },
+  eligibility: { type: String, required: true },
+  amount: Number,
+  applicationLink: { type: String, required: true },
+  deadline: Date,
+  description: { type: String, required: true },
+  document: String,
+}, { timestamps: true });
 
-module.exports = mongoose.model('Scholarship', scholarshipSchema);
+export default mongoose.model("Scholarship", ScholarshipSchema);

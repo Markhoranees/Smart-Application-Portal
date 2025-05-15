@@ -1,28 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
 import "../assets/styles/About.css";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import HeroSection from "../components/HeroSection";
+
+
 import aboutImage from "../assets/image/about.png";
 import profileImage from "../assets/image/profile1.png";
-import JobFeature from "../components/JobFeatures";
+
 
 
 const About = () => {
   return (
     <>
-      <Header />
-      <HeroSection
-        showText={false}
-        height="70vh"   backgroundImage={aboutImage} 
-        breadcrumb={
-          <nav>
-            <Link to="/" className="breadcrumb-link">Home</Link> &gt;
-            <span className="breadcrumb-active"> About us</span>
-          </nav>
-        }
-      />
+   
 
       <section className="about-section">
         <div className="container about-container">
@@ -85,9 +73,9 @@ const About = () => {
         </div>
       </section>
        
-       <JobFeature/>
+ 
 
-      <Footer />
+  
     </>
   );
 };

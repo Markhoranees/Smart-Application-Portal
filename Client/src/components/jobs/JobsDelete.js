@@ -3,24 +3,14 @@ import "../../assets/styles/Joblist.css";
 
 
 // Dummy job data (replace with real data from API)
-const jobData = [
-  { id: 1, title: "Frontend Developer", category: "Full Time", location: "New York" },
-  { id: 2, title: "Backend Developer", category: "Part Time", location: "San Francisco" },
-  { id: 3, title: "UI/UX Designer", category: "Freelancer", location: "Remote" },
-];
 
-const Joblist = () => {
+const JobDelete = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredJobs, setFilteredJobs] = useState(jobData);
+  
 
   // Handle search
   const handleSearch = () => {
-    const filtered = jobData.filter((job) =>
-      job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.location.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredJobs(filtered);
+   console.log("testing");
   };
 
   return (
@@ -52,4 +42,4 @@ const Joblist = () => {
   );
 };
 
-export default Joblist;
+export default JobDelete;

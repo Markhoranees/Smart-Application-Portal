@@ -1,9 +1,9 @@
 // routes/adminRoutes.js
 import express from 'express';
 import adminMiddleware from '../middlewares/adminMiddleware.js';
-import { getAllJobs, createJob, updateJob, deleteJob } from '../controllers/jobController.js';
-import { getAllInternships, createInternship, updateInternship, deleteInternship } from '../controllers/internshipController.js';
-import { getAllScholarships, createScholarship, updateScholarship, deleteScholarship } from '../controllers/scholarshipController.js';
+import { getAllJobs, createJob, updateJob, deleteJob } from '../controllers/jobsController.js';
+import { getAllInternships, createInternship, updateInternship, deleteInternship } from '../controllers/internshipsController.js';
+import { getAllScholarships, createScholarship, updateScholarship, deleteScholarship } from '../controllers/scholarshipsController.js';
 
 const router = express.Router();
 
