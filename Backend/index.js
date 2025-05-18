@@ -5,6 +5,8 @@ import connectDB from './config/db.js';
 import JobRoutes from './routes/JobRoutes.js';
 import ScholarshipRoutes from './routes/ScholarshipRoutes.js';
 import InternshipRoutes from './routes/InternshipRoutes.js';
+import path from 'path';
+
 
 dotenv.config();
 
@@ -18,12 +20,15 @@ const app = express();
 
     // Middleware
     app.use(cors({
-      origin: process.env.CORS_ORIGIN || '*', // optionally restrict origin in production
+      // optionally restrict origin in production
       methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
       credentials: true,
     }));
     app.use(express.json());
 
+
+
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
     // API Routes
     app.use('/api/jobs', JobRoutes);
     app.use('/api/scholarships', ScholarshipRoutes);

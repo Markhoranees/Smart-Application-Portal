@@ -1,4 +1,4 @@
-.post-job-container {
+.post-scholarship-container {
   background: #f7f9fc;
   min-height: 100vh;
   display: flex;
@@ -7,7 +7,7 @@
   padding: 30px 15px;
 }
 
-.post-job-form-container {
+.post-scholarship-form-container {
   max-width: 600px;
   background-color: #fff;
   border-radius: 12px;

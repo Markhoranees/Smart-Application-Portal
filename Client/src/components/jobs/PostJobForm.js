@@ -4,7 +4,7 @@ import "../../assets/styles/PostJobForm.css";
 
 const PostJobForm = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  // const [previewImage, setPreviewImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
@@ -15,14 +15,17 @@ const PostJobForm = () => {
     setSuccessMsg(null);
 
     try {
-      // Prepare form data for multipart/form-data (for file upload)
       const formData = new FormData();
-      for (const key in data) {
-        if (key === "file" && data[key]?.length > 0) {
-          formData.append(key, data[key][0]); // file input is an array
-        } else {
-          formData.append(key, data[key]);
-        }
+
+      formData.append("title", data.title);
+      formData.append("company", data.company);
+      formData.append("category", data.category);
+      formData.append("description", data.description);
+      formData.append("applicationEmail", data.applicationEmail);
+      formData.append("closingDate", data.closingDate || ""); // Add closingDate
+
+      if (data.image && data.image.length > 0) {
+        formData.append("image", data.image[0]);
       }
 
       const response = await fetch("http://localhost:5000/api/jobs", {
@@ -37,7 +40,7 @@ const PostJobForm = () => {
 
       setSuccessMsg("Job successfully posted!");
       reset();
-      // setPreviewImage(null);
+      setPreviewImage(null);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -45,142 +48,119 @@ const PostJobForm = () => {
     }
   };
 
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setPreviewImage(URL.createObjectURL(file));
-  //   } else {
-  //     setPreviewImage(null);
-  //   }
-  // };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPreviewImage(URL.createObjectURL(file));
+    } else {
+      setPreviewImage(null);
+    }
+  };
 
   return (
-    <div className="page-container">
-      <div className="form-container fade-in">
+    <div className="container-fluid d-flex justify-content-center align-items-center py-5 post-job-container">
+      <div className="post-job-form-container p-5 shadow-lg rounded-3 bg-white">
+        <h2 className="form-title text-center mb-4">🚀 Post a New Job</h2>
+
+        {error && <div className="alert alert-danger">{error}</div>}
+        {successMsg && <div className="alert alert-success">{successMsg}</div>}
+
         <form onSubmit={handleSubmit(onSubmit)} className="job-form" encType="multipart/form-data">
-          <h2>Post a New Job</h2>
 
-          {error && <p className="error">{error}</p>}
-          {successMsg && <p className="success">{successMsg}</p>}
+          <div className="mb-3">
+            <label className="form-label">Job Title <span className="required">*</span></label>
+            <input
+              type="text"
+              className={`form-control ${errors.jobTitle ? "is-invalid" : ""}`}
+              {...register("title", { required: "Job title is required" })}
+              disabled={loading}
+            />
+            {errors.jobTitle && <div className="invalid-feedback">{errors.jobTitle.message}</div>}
+          </div>
 
-          <label>Job Title <span className="required">*</span></label>
-          <input
-            type="text"
-            {...register("jobTitle", { required: "Job title is required" })}
-            placeholder="Enter job title"
-            disabled={loading}
-          />
-          {errors.jobTitle && <span className="error">{errors.jobTitle.message}</span>}
+          <div className="mb-3">
+            <label className="form-label">Company Name <span className="required">*</span></label>
+            <input
+              type="text"
+              className={`form-control ${errors.companyName ? "is-invalid" : ""}`}
+              {...register("company", { required: "Company name is required" })}
+              disabled={loading}
+            />
+            {errors.companyName && <div className="invalid-feedback">{errors.companyName.message}</div>}
+          </div>
 
-          <label>Company Name <span className="required">*</span></label>
-          <input
-            type="text"
-            {...register("companyName", { required: "Company name is required" })}
-            placeholder="Enter company name"
-            disabled={loading}
-          />
-          {errors.companyName && <span className="error">{errors.companyName.message}</span>}
+          <div className="mb-3">
+            <label className="form-label">Category <span className="required">*</span></label>
+            <select
+              className={`form-select ${errors.category ? "is-invalid" : ""}`}
+              {...register("category", { required: "Category is required" })}
+              disabled={loading}
+            >
+              <option value="">Select category</option>
+              <option value="IT">IT</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Design">Design</option>
+            </select>
+            {errors.category && <div className="invalid-feedback">{errors.category.message}</div>}
+          </div>
 
-          <label>Location (optional)</label>
-          <input
-            type="text"
-            {...register("location")}
-            placeholder="City, Country"
-            disabled={loading}
-          />
+          <div className="mb-3">
+            <label className="form-label">Description <span className="required">*</span></label>
+            <textarea
+              className={`form-control ${errors.description ? "is-invalid" : ""}`}
+              rows="5"
+              {...register("description", { required: "Description is required" })}
+              disabled={loading}
+            ></textarea>
+            {errors.description && <div className="invalid-feedback">{errors.description.message}</div>}
+          </div>
 
-          <label>Category <span className="required">*</span></label>
-          <select
-            {...register("category", { required: "Category is required" })}
-            disabled={loading}
-          >
-            <option value="">Select category</option>
-            <option value="IT">IT</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Design">Design</option>
-          </select>
-          {errors.category && <span className="error">{errors.category.message}</span>}
+          <div className="mb-3">
+            <label className="form-label">Application Email / URL <span className="required">*</span></label>
+            <input
+              type="email"
+              className={`form-control ${errors.applicationEmail ? "is-invalid" : ""}`}
+              {...register("applicationEmail", {
+                required: "Valid email is required",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Invalid email address",
+                },
+              })}
+              disabled={loading}
+            />
+            {errors.applicationEmail && <div className="invalid-feedback">{errors.applicationEmail.message}</div>}
+          </div>
 
-          <label>Job Tags (optional)</label>
-          <input
-            type="text"
-            {...register("jobTags")}
-            placeholder="e.g., PHP, React"
-            disabled={loading}
-          />
+          <div className="mb-3">
+            <label className="form-label">Closing Date <span className="required">*</span></label>
+            <input
+              type="date"
+              className={`form-control ${errors.closingDate ? "is-invalid" : ""}`}
+              {...register("closingDate", { required: "Closing date is required" })}
+              disabled={loading}
+            />
+            {errors.closingDate && <div className="invalid-feedback">{errors.closingDate.message}</div>}
+          </div>
 
-          <label>Description <span className="required">*</span></label>
-          <textarea
-            {...register("description", { required: "Description is required" })}
-            placeholder="Describe the job here..."
-            disabled={loading}
-          />
-          {errors.description && <span className="error">{errors.description.message}</span>}
+          <div className="mb-3">
+            <label className="form-label">Upload Company Logo or Photo (optional)</label>
+            <input
+              type="file"
+              accept="image/*"
+              className="form-control"
+              {...register("image")}
+              onChange={handleFileChange}
+              disabled={loading}
+            />
+            {previewImage && (
+              <div className="image-preview my-3">
+                <img src={previewImage} alt="Preview" className="img-fluid rounded shadow" />
+              </div>
+            )}
+          </div>
 
-          <label>Application Email / URL <span className="required">*</span></label>
-          <input
-            type="email"
-            {...register("applicationEmail", {
-              required: "Valid email is required",
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: "Invalid email address"
-              }
-            })}
-            placeholder="example@company.com"
-            disabled={loading}
-          />
-          {errors.applicationEmail && <span className="error">{errors.applicationEmail.message}</span>}
-
-          <label>Closing Date (optional)</label>
-          <input
-            type="date"
-            {...register("closingDate")}
-            disabled={loading}
-          />
-
-          <h3>Company Details</h3>
-
-          <label>Company Name <span className="required">*</span></label>
-          <input
-            type="text"
-            {...register("companyDetailsName", { required: "Company name is required" })}
-            placeholder="Official company name"
-            disabled={loading}
-          />
-          {errors.companyDetailsName && <span className="error">{errors.companyDetailsName.message}</span>}
-
-          <label>Website (optional)</label>
-          <input
-            type="url"
-            {...register("website")}
-            placeholder="https://www.companywebsite.com"
-            disabled={loading}
-          />
-
-          <label>Tagline (optional)</label>
-          <input
-            type="text"
-            {...register("tagline")}
-            placeholder="Short company slogan"
-            disabled={loading}
-          />
-
-          {/* <label>Upload Company Logo or Photo (optional)</label>
-          <input
-            type="file"
-            accept="image/*"
-            {...register("file")}
-            onChange={handleFileChange}
-            disabled={loading}
-          />
-          {previewImage && (
-            <div className="image-preview">
-              <img src={previewImage} alt="Preview" />
-            </div>
-          )} */}
-
-          <button type="submit" className="submit-btn" disabled={loading}>
+          <button type="submit" className="btn btn-primary w-100" disabled={loading}>
             {loading ? "Posting..." : "Submit Your Job"}
           </button>
         </form>

@@ -7,11 +7,19 @@ export const fetchJobs = async () => {
   return res.json();
 };
 
+
+export const fetchJobDetails = async (id) => {
+  const res = await fetch(`${API_URL}/${id}`);
+  if (!res.ok) throw new Error("Failed to fetch job details");
+  return res.json();
+};
+
+
 export const createJob = async (jobData) => {
+  // jobData should be FormData instance
   const res = await fetch(API_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(jobData),
+    body: jobData, // send FormData directly, no JSON.stringify
   });
   if (!res.ok) throw new Error("Failed to create job");
   return res.json();

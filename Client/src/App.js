@@ -12,7 +12,8 @@ import SignIn from './components/auth/SignInForm.js';
 import { SignUp } from "@clerk/clerk-react";
 import Dashboard from "./pages/Admin/Dashboard";
 import PostJobForm from "./components/jobs/PostJobForm.js"
-// import AdminRoute from "./components/AdminRoute"; 
+import PostScholarshipForm from "./components/scholarships/PostScholarshipForm.js"  
+import DeleteScholarships from "./components/scholarships/DeleteScholarships.js"
 
 
 // const ProtectedRoute = ({ children }) => {
@@ -23,7 +24,7 @@ import PostJobForm from "./components/jobs/PostJobForm.js"
 function App() {
   return (
     <Router>
-      <>
+      <div className="main-content">
         <Header />
         <Routes>
           {/* Public Routes */}
@@ -35,6 +36,9 @@ function App() {
           <Route path="/dltjob" element={<JobsDelete />} />
           <Route path="/postjob" element={<PostJobForm />} />
           <Route path="/jobs/:id" element={<JobDetail />} />
+          <Route path="/postscholarship" element={<PostScholarshipForm />} />
+          <Route path="/dltscholarship" element={<DeleteScholarships />} />
+           
                     <Route path="/admin" element={  <Dashboard />  }/>
 
           {/* Protected Routes */}
@@ -54,7 +58,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
-      </>
+</div>
     </Router>
   );
 }

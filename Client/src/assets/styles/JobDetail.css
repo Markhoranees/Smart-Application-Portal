@@ -1,48 +1,185 @@
- 
-   .container-jobdetails{
-    background: url("../image/joblist1.png");
-    height: 80vh;
-    width: 100%;
-    text-align: center;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.jobs-list-portal {
+  background-color: #0d1b2a;
+  min-height: 100vh;
+  padding: 120px 20px 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0e1dd;
+  max-width: 700px;
+  margin: 0 auto;
+}
 
-   }
-   .top-header h3{
-    padding-top: 100px;
-    color: white;
-   }
-  
-  /* Hover effect for Apply Button */
-  .apply-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .apply-btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-  }
-  
-  /* Hover effect for Job Detail Container */
-  .job-detail-container {
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    padding-left: 60px;
-    padding-top: 40px;
-  }
-  
-  .job-detail-container:hover {
-    transform: scale(1.02);
-  }
-  
+/* Header */
+.jobs-header {
+  text-align: center;
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: 4px;
+  color: #bbe1fa;
+  border-bottom: 2px solid #415a77;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+/* Subtitle */
+.jobs-subtitle {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #a9bcd0;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+/* Loading and error */
+.jobs-loading {
+  min-height: 100vh;
+  background-color: #0d1b2a;
+  color: #e0e1dd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.jobs-error {
+  max-width: 700px;
+  margin: 50px auto;
+  font-weight: bold;
+  background-color: #9e2a2b;
+  color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Main container */
+.jobs-main {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* No jobs text */
+.no-jobs {
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  color: #415a77;
+}
+
+/* Job card */
+.job-card {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 50px;
+  background-color: #1b263b;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 3px rgba(187, 225, 250, 0.7);
+  padding: 15px;
+  align-items: center;
+  color: #dbe9fb;
+  transition: box-shadow 0.3s ease;
+}
+
+.job-card:hover {
+  box-shadow: 0 0 20px 6px rgba(187, 225, 250, 0.9);
+}
+
+/* Image container */
+.job-image-container {
+  flex: 0 0 160px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #415a77;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #1b263b;
+  box-shadow: 0 0 8px 2px rgba(187, 225, 250, 0.6);
+}
+
+/* Image */
+.job-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: drop-shadow(0 0 4px rgba(187, 225, 250, 0.8));
+}
+
+/* No Image text */
+.no-image-text {
+  color: #7a9cc6;
+  font-weight: 600;
+  text-shadow: 0 0 6px rgba(187, 225, 250, 0.9);
+}
+
+/* Details */
+.job-details {
+  flex: 1;
+}
+
+/* Title */
+.job-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #bbe1fa;
+  text-shadow: 0 0 6px rgba(187, 225, 250, 0.9);
+  text-transform: uppercase;
+}
+
+/* Company */
+.job-company {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #90aaff;
+  text-shadow: 0 0 4px rgba(144, 170, 255, 0.8);
+}
+
+/* Closing date */
+.job-closing-date {
+  font-size: 14px;
+  color: #7a9cc6;
+  font-weight: 500;
+  text-shadow: 0 0 3px rgba(122, 156, 198, 0.7);
+}
+
+/* Buttons container */
+.job-buttons {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Delete button */
+.btn-delete {
+  font-weight: 700 !important;
+  background-color: #d62828 !important;
+  border-color: #b22222 !important;
+  box-shadow: 0 0 8px 2px rgba(214, 40, 40, 0.8);
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-delete:hover {
+  box-shadow: 0 0 12px 4px rgba(214, 40, 40, 1);
+}
+
+/* View button */
+.btn-view {
+  font-weight: 700 !important;
+  color: #bbe1fa !important;
+  border-color: #bbe1fa !important;
+  box-shadow: 0 0 8px 2px rgba(187, 225, 250, 0.8);
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-view:hover {
+  box-shadow: 0 0 12px 4px rgba(187, 225, 250, 1);
+}

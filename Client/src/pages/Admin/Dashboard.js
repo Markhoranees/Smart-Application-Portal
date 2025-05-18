@@ -1,7 +1,7 @@
 import React from "react";
 import { useUser } from "@clerk/clerk-react";
-import { useNavigate} from "react-router-dom";
-import "../../assets/styles/Dashboard.css"; // Adjust path accordingly
+import { useNavigate } from "react-router-dom";
+import "../../assets/styles/Dashboard.css";
 
 const Dashboard = () => {
   const { user, isLoaded } = useUser();
@@ -25,42 +25,63 @@ const Dashboard = () => {
       </div>
 
       <div className="dashboard-grid row g-4">
-        {/* Jobs Posting Card */}
-        <section className="dashboard-card col-md-4 p-4 shadow rounded">
-          <h2>Jobs Posting</h2>
-          <p>Manage job postings and view job listings.</p>
-          <div className="card-actions d-flex gap-3 mt-4">
+        {/* Jobs Card */}
+        <section className="dashboard-card col-md-4 p-4 shadow rounded text-center">
+          <h2>Jobs</h2>
+          <div className="card-actions d-flex flex-column gap-3 mt-4">
             <button
-              className="btn btn-primary flex-grow-1"
+              className="btn btn-primary"
               onClick={() => navigate("/postjob")}
             >
-              Manage Jobs
+              Post Job
             </button>
-            <button 
-            className="btn btn-outline-secondary flex-grow-1"
-                    onClick={() => navigate("/dltjob")}>
-              View Job List
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate("/dltjob")}
+            >
+              Delete Listed Jobs
             </button>
           </div>
         </section>
 
-        {/* Scholarship Posting Card */}
-        <section className="dashboard-card col-md-4 p-4 shadow rounded">
-          <h2>Scholarship Posting</h2>
-          <p>Create and manage scholarship opportunities.</p>
-          <div className="card-actions d-flex gap-3 mt-4">
-            <button className="btn btn-primary flex-grow-1">Manage Scholarships</button>
-            <button className="btn btn-outline-secondary flex-grow-1">View Scholarship List</button>
+        {/* Scholarships Card */}
+        <section className="dashboard-card col-md-4 p-4 shadow rounded text-center">
+          <h2>Scholarships</h2>
+          <div className="card-actions d-flex flex-column gap-3 mt-4">
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate("/postscholarship")}
+            >
+              Post Scholarship
+            </button>
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => navigate("/dltscholarship")}
+            >
+              Delete Listed Scholarships
+            </button>
           </div>
         </section>
 
-        {/* Internship Posting Card */}
-        <section className="dashboard-card col-md-4 p-4 shadow rounded">
-          <h2>Internship Posting</h2>
-          <p>Manage internship offers and applications.</p>
-          <div className="card-actions d-flex gap-3 mt-4">
-            <button className="btn btn-primary flex-grow-1">Manage Internships</button>
-            <button className="btn btn-outline-secondary flex-grow-1">View Internship List</button>
+        {/* Internships Card */}
+        <section className="dashboard-card col-md-4 p-4 shadow rounded text-center">
+          <h2>Internships</h2>
+          <div className="card-actions d-flex flex-column gap-3 mt-4">
+
+
+<button
+  className="btn btn-primary flex-grow-1"
+  onClick={() => navigate("/postscholarship")}
+>
+  Post Internship
+</button>
+<button
+  className="btn btn-outline-secondary flex-grow-1"
+  onClick={() => navigate("/dlscholarship")}
+>
+  Delete Listed Internships
+</button>
+
           </div>
         </section>
       </div>

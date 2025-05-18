@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchScholarships } from "../../features/auth/scholarshipsSlice";
 import { Card, Button, Spinner, Alert, Badge } from "react-bootstrap";
-import Header from "../../components/common/Header";
-import Footer from "../../components/common/Footer";
+
 
 const Scholarships = () => {
   const dispatch = useDispatch();
@@ -36,7 +35,7 @@ const Scholarships = () => {
 
   return (
     <>
-   
+
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3>Scholarships</h3>

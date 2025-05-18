@@ -1,26 +1,12 @@
 import express from "express";
-import { getAllScholarships, createScholarship, deleteScholarshipById } from "../controllers/scholarshipsController.js";
-
+import upload from "../middlewares/upload.js";
+import { createScholarship, getAllScholarships, getScholarshipById, deleteScholarshipById } from "../controllers/scholarshipsController.js";
 
 const router = express.Router();
 
 router.get("/", getAllScholarships);
-router.post("/", createScholarship);
+router.post("/", upload.single("image"), createScholarship); // multer expects field 'image'
+router.get("/:id", getScholarshipById);
 router.delete("/:id", deleteScholarshipById);
 
-
-
 export default router;
-
-
-
-
-
-
-
-
-
-
-
-
-
