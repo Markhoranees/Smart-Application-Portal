@@ -11,10 +11,11 @@ import { UserProfile } from '@clerk/clerk-react';
 import SignIn from './components/auth/SignInForm.js';
 import { SignUp } from "@clerk/clerk-react";
 import Dashboard from "./pages/Admin/Dashboard";
-import PostJobForm from "./components/jobs/PostJobForm.js"
-import PostScholarshipForm from "./components/scholarships/PostScholarshipForm.js"  
-import DeleteScholarships from "./components/scholarships/DeleteScholarships.js"
-
+import PostJobForm from "./components/jobs/PostJobForm.js";
+import PostScholarshipForm from "./components/scholarships/PostScholarshipForm.js";  
+import DeleteScholarships from "./components/scholarships/DeleteScholarships.js";
+import PostInternshipForm from "./components/internship/PostInsternshipForm.js";
+import DeleteInternships from "./components/internship/DeleteInternships.js";
 
 // const ProtectedRoute = ({ children }) => {
 //   const { isAuthenticated } = useAuth();
@@ -38,6 +39,8 @@ function App() {
           <Route path="/jobs/:id" element={<JobDetail />} />
           <Route path="/postscholarship" element={<PostScholarshipForm />} />
           <Route path="/dltscholarship" element={<DeleteScholarships />} />
+          <Route path="/postinternship" element={<PostInternshipForm />} />
+          <Route path="/dltinternship" element={<DeleteInternships />} />
            
                     <Route path="/admin" element={  <Dashboard />  }/>
 

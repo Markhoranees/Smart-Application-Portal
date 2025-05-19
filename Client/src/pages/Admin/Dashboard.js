@@ -71,13 +71,13 @@ const Dashboard = () => {
 
 <button
   className="btn btn-primary flex-grow-1"
-  onClick={() => navigate("/postscholarship")}
+  onClick={() => navigate("/postinternship")}
 >
-  Post Internship
+  Post Internshipsss
 </button>
 <button
   className="btn btn-outline-secondary flex-grow-1"
-  onClick={() => navigate("/dlscholarship")}
+  onClick={() => navigate("/dltinternship")}
 >
   Delete Listed Internships
 </button>

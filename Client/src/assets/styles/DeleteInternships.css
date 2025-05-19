@@ -1,10 +1,9 @@
-.scholarships-list-portal {
+.internships-list-portal {
   width: 100vw;
   margin: 0;
   padding: 40px 60px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
-
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,22 +11,21 @@
   overflow-x: hidden; /* prevent horizontal scroll on whole page */
 }
 
-.scholarships-header {
+.internships-header {
   width: 100%;
   max-width: 1200px;
   font-size: 3rem;
   font-weight: 900;
   color: #0056b3;
-  margin-left: 40rem;
+  margin-left: 40rem; /* Adjust if needed or remove */
   margin-bottom: 30px;
   text-align: center;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  user-select: none;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
-.scholarships-subtitle {
+.internships-subtitle {
   max-width: 1200px;
   width: 100%;
   text-align: center;
@@ -38,7 +36,7 @@
   line-height: 1.5;
 }
 
-.scholarships-main {
+.internships-main {
   max-width: 1200px;
   width: 100%;
   display: flex;
@@ -51,24 +49,23 @@
   scrollbar-color: #0d6efd transparent;
 }
 
-/* Hide vertical scrollbars */
-.scholarships-main::-webkit-scrollbar {
+/* Scrollbar styles */
+.internships-main::-webkit-scrollbar {
   height: 10px;
 }
 
-.scholarships-main::-webkit-scrollbar-track {
+.internships-main::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.scholarships-main::-webkit-scrollbar-thumb {
+.internships-main::-webkit-scrollbar-thumb {
   background-color: #0d6efd;
   border-radius: 10px;
   border: 3px solid transparent;
 }
 
-/* Fixed card width for horizontal scroll */
-.scholarship-card {
-  flex: 0 0 400px; /* fixed width cards */
+.internship-card {
+  flex: 0 0 400px;
   background: #ffffff;
   border-radius: 14px;
   box-shadow: 0 10px 24px rgba(0,0,0,0.1);
@@ -79,12 +76,12 @@
   cursor: pointer;
 }
 
-.scholarship-card:hover {
+.internship-card:hover {
   transform: translateY(-12px);
   box-shadow: 0 20px 48px rgba(0,0,0,0.18);
 }
 
-.scholarship-image-container {
+.internship-image-container {
   flex-shrink: 0;
   background: #e2e8f0;
   height: 200px;
@@ -95,14 +92,14 @@
   border-bottom: 1.5px solid #cbd5e1;
 }
 
-.scholarship-image {
+.internship-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.4s ease;
 }
 
-.scholarship-card:hover .scholarship-image {
+.internship-card:hover .internship-image {
   transform: scale(1.08);
 }
 
@@ -112,14 +109,14 @@
   font-style: italic;
 }
 
-.scholarship-details {
+.internship-details {
   padding: 24px 28px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.scholarship-title {
+.internship-title {
   font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 10px;
@@ -127,7 +124,7 @@
   line-height: 1.2;
 }
 
-.scholarship-provider {
+.internship-company {
   font-size: 1.15rem;
   color: #64748b;
   margin-bottom: 22px;
@@ -135,28 +132,31 @@
   font-style: italic;
 }
 
-.scholarship-closing-date {
+.internship-location,
+.internship-category,
+.internship-description,
+.internship-closing-date {
   font-size: 1rem;
   color: #475569;
-  margin-bottom: 28px;
-  font-weight: 700;
-  user-select: none;
+  margin-bottom: 18px;
+  font-weight: 500;
 }
 
-.scholarship-buttons {
+.internship-buttons {
   margin-top: auto;
   display: flex;
   gap: 18px;
 }
 
-.btn-delete, .btn-view {
+.btn-delete,
+.btn-view {
   flex-grow: 1;
   font-weight: 700;
   border-radius: 10px;
   padding: 12px 0;
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 8px rgba(0,86,179,0.3);
-  user-select: none;
+
   letter-spacing: 0.04em;
   font-size: 1.05rem;
 }
@@ -190,9 +190,9 @@
   box-shadow: 0 6px 16px rgba(13,110,253,0.6);
 }
 
-.scholarships-loading,
-.scholarships-error,
-.no-scholarships {
+.internships-loading,
+.internships-error,
+.no-internships {
   text-align: center;
   font-size: 1.4rem;
   margin-top: 90px;

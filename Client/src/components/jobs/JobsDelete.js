@@ -42,93 +42,85 @@ const JobsDelete = () => {
 
   if (loading)
     return (
-      <div className="jobs-loading d-flex flex-column align-items-center justify-content-center">
+      <div className="jobs-loading">
         <Spinner animation="border" variant="primary" />
-        <p className="loading-text mt-3 fs-5 text-primary">Loading jobs...</p>
+        <p>Loading jobs...</p>
       </div>
     );
 
   if (error)
     return (
-      <Alert variant="danger" className="jobs-error text-center my-4">
+      <Alert variant="danger" className="jobs-error">
         {error}
       </Alert>
     );
 
   return (
-    <div className="jobs-list-portal container py-5">
-    
-    <h1 className="text-center">Jobs List</h1>
+    <div className="jobs-list-portal container">
+      <header className="jobs-header">JOBS LIST</header>
 
-      {/* Job Items */}
-      <main className="jobs-main d-flex flex-column gap-4">
+      <main className="jobs-main">
         {jobs.length === 0 ? (
-          <p className="no-jobs text-center fs-4 text-secondary">
-            No jobs found.
-          </p>
+          <p className="no-jobs">No jobs found.</p>
         ) : (
           jobs.map((job) => (
-            <article
-              key={job._id}
-              className="job-card d-flex flex-wrap align-items-center shadow-sm rounded border p-3 bg-white"
-            >
-              <div className="job-image-container flex-shrink-0 me-4 mb-3 mb-md-0">
+            <article key={job._id} className="job-card">
+              <div className="job-image-container">
                 {job.image ? (
                   <img
-                    src={job.image}
-                    alt={`${job.company || "company"} logo`}
-                    className="job-image rounded"
+             src={`http://localhost:5000/uploads/${job.image}`} 
+
+                    alt={`${job.company || "Company"} logo`}
+                    className="job-image"
                     loading="lazy"
                   />
                 ) : (
-                  <div className="no-image-text d-flex align-items-center justify-content-center rounded bg-light">
-                    No Image
-                  </div>
+                  <span className="no-image-text">No Image</span>
                 )}
               </div>
 
-              <div className="job-details flex-grow-1 d-flex flex-column">
-                <h2 className="job-title mb-1">{job.title || "No Title"}</h2>
-                <p className="job-company text-secondary mb-2">{job.company || "Unknown Company"}</p>
-                <p className="job-location mb-2">
+              <div className="job-details">
+                <h2 className="job-title">{job.title || "NO TITLE"}</h2>
+                <p className="job-company">{job.company || "Unknown Company"}</p>
+
+                <p className="job-location">
                   <strong>Location:</strong> {job.location || "N/A"}
                 </p>
-                <p className="job-category mb-2">
+                <p className="job-category">
                   <strong>Category:</strong> {job.category || "N/A"}
                 </p>
-                <p className="job-description text-truncate">
-                  {job.description || "No description available."}
-                </p>
 
-                <div className="mt-auto d-flex justify-content-between align-items-center flex-wrap gap-2">
-                  <small className="text-muted">
+                <p className="job-description">{job.description || "No description available."}</p>
+
+                {job.closingDate && (
+                  <p className="job-closing-date">
                     Closing Date:{" "}
-                    {job.closingDate
-                      ? new Date(job.closingDate).toLocaleDateString(undefined, {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      : "N/A"}
-                  </small>
+                    {new Date(job.closingDate).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                )}
 
-                  <div className="job-buttons d-flex gap-2">
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      onClick={() => handleDelete(job._id)}
-                      disabled={deletingId === job._id}
-                    >
-                      {deletingId === job._id ? "Deleting..." : "Delete"}
-                    </Button>
-                    <Button
-                      variant="outline-primary"
-                      size="sm"
-                      onClick={() => navigate(`/job/${job._id}`)}
-                    >
-                      View Details
-                    </Button>
-                  </div>
+                <div className="job-buttons">
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleDelete(job._id)}
+                    disabled={deletingId === job._id}
+                    className="btn-delete"
+                  >
+                    {deletingId === job._id ? "Deleting..." : "Delete"}
+                  </Button>
+                  <Button
+                    variant="outline-primary"
+                    size="sm"
+                    onClick={() => navigate(`/job/${job._id}`)}
+                    className="btn-view"
+                  >
+                    View Details
+                  </Button>
                 </div>
               </div>
             </article>
