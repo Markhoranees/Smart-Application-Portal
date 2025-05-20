@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Spinner, Alert, Button } from "react-bootstrap";
 import { fetchJobs, deleteJob } from "../../api/jobs";
 import { useNavigate } from "react-router-dom";
-import "../../assets/styles/JobsDelete.css";
+import "../../assets/styles/JobsDelete.css"; // New CSS file for this UI
 
 const JobsDelete = () => {
   const [jobs, setJobs] = useState([]);
@@ -56,7 +56,7 @@ const JobsDelete = () => {
     );
 
   return (
-    <div className="jobs-list-portal container">
+    <div className="jobs-list-portal">
       <header className="jobs-header">JOBS LIST</header>
 
       <main className="jobs-main">
@@ -68,8 +68,7 @@ const JobsDelete = () => {
               <div className="job-image-container">
                 {job.image ? (
                   <img
-             src={`http://localhost:5000/uploads/${job.image}`} 
-
+                    src={job.image.startsWith("http") ? job.image : `/uploads/${job.image}`}
                     alt={`${job.company || "Company"} logo`}
                     className="job-image"
                     loading="lazy"

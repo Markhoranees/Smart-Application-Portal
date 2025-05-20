@@ -1,15 +1,16 @@
 .jobs-list-portal {
   width: 100vw;
-  margin: 0;
-  padding: 40px 60px;
+ background-color: #bbdefb;
+ 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
-
-  min-height: 100vh;
+margin-left: 30rem;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden; /* prevent horizontal scroll on whole page */
+  overflow-x:scroll; /* prevent horizontal scroll on whole page */
+/* light background for overall page */
 }
 
 .jobs-header {
@@ -18,13 +19,16 @@
   font-size: 3rem;
   font-weight: 900;
   color: #0056b3;
-  margin-left: 40rem; /* adjust as needed or remove */
   margin-bottom: 30px;
   text-align: center;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  user-select: none;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  /* Center horizontally with flex */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0; /* remove left margin */
 }
 
 .jobs-main {
@@ -38,6 +42,11 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: #0d6efd transparent;
+  background-color: #fff; /* keep cards container light */
+  border-radius: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 /* Scrollbar styling */
@@ -55,33 +64,36 @@
   border: 3px solid transparent;
 }
 
-/* Fixed card width for horizontal scroll */
+/* Darker job cards */
 .job-card {
   flex: 0 0 400px; /* fixed width cards */
-  background: #ffffff;
+  background: rgb(151, 148, 148); /* dark blue-gray */
   border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   cursor: pointer;
+  color: #0c252b; /* light text */
 }
+
+
 
 .job-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.18);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.5);
 }
 
 .job-image-container {
   flex-shrink: 0;
-  background: #e2e8f0;
+  background: rgb(165, 136, 136); /* darker background for image container */
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-bottom: 1.5px solid #cbd5e1;
+  border-bottom: 1.5px solid #1f2d3a;
 }
 
 .job-image {
@@ -97,7 +109,7 @@
 
 .no-image-text {
   font-size: 1.05rem;
-  color: #94a3b8;
+  color: #95a5a6;
   font-style: italic;
 }
 
@@ -110,15 +122,15 @@
 
 .job-title {
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 10px;
-  color: #1e293b;
+  color: #ecf0f1;
   line-height: 1.2;
 }
 
 .job-company {
   font-size: 1.15rem;
-  color: #64748b;
+  color: #bdc3c7;
   margin-bottom: 22px;
   font-weight: 600;
   font-style: italic;
@@ -129,7 +141,7 @@
 .job-description,
 .job-closing-date {
   font-size: 1rem;
-  color: #475569;
+  color: #dfe6e9;
   margin-bottom: 14px;
   font-weight: 600;
 }
@@ -150,39 +162,40 @@
   border-radius: 10px;
   padding: 12px 0;
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,86,179,0.3);
   user-select: none;
   letter-spacing: 0.04em;
   font-size: 1.05rem;
 }
 
 .btn-delete {
-  background-color: #e11d48;
+  background-color: #e74c3c; /* bright red */
   border: none;
   color: #fff;
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.5);
 }
 
 .btn-delete:hover:not(:disabled) {
-  background-color: #be123c;
-  box-shadow: 0 6px 14px rgba(190, 18, 60, 0.5);
+  background-color: #c0392b;
+  box-shadow: 0 6px 14px rgba(192, 57, 43, 0.7);
 }
 
 .btn-delete:disabled {
-  background-color: #fda4af;
+  background-color: #f1948a;
   cursor: not-allowed;
   box-shadow: none;
 }
 
 .btn-view {
   background-color: transparent;
-  border: 2.5px solid #0d6efd;
-  color: #0d6efd;
+  border: 2.5px solid #3498db; /* lighter blue */
+  color: #3498db;
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
 }
 
 .btn-view:hover {
-  background-color: #0d6efd;
+  background-color: #3498db;
   color: white;
-  box-shadow: 0 6px 16px rgba(13,110,253,0.6);
+  box-shadow: 0 6px 16px rgba(52, 152, 219, 0.7);
 }
 
 .jobs-loading,

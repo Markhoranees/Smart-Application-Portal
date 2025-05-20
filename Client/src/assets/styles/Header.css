@@ -5,16 +5,18 @@
   box-sizing: border-box;
 }
 .main-content {
-  padding-top: 87px; /* equal to header's height */
-} 
+    height: 87px; 
 
+
+}
 .header {
   position: fixed;
   top: 0;
   width: 100%;
   background: rgba(13, 28, 70, 0.9);
-  padding: 15px 20px;
+  padding: 20px 20px;
   box-shadow: none;
+  height: auto;
   transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
   font-family: Arial, sans-serif;
@@ -104,6 +106,7 @@
   flex-direction: column;
   padding: 8px 0;
   pointer-events: none;
+  margin-bottom: 60px;
 }
 
 .dropdown-menu.show {

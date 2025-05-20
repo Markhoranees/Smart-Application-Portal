@@ -6,7 +6,7 @@ import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import JobsDelete from "./components/jobs/JobsDelete.js";
-import JobDetail from "./components/jobs/JobDetail";
+// import JobDetail from "./components/jobs/JobDetail";
 import { UserProfile } from '@clerk/clerk-react';
 import SignIn from './components/auth/SignInForm.js';
 import { SignUp } from "@clerk/clerk-react";
@@ -16,11 +16,11 @@ import PostScholarshipForm from "./components/scholarships/PostScholarshipForm.j
 import DeleteScholarships from "./components/scholarships/DeleteScholarships.js";
 import PostInternshipForm from "./components/internship/PostInsternshipForm.js";
 import DeleteInternships from "./components/internship/DeleteInternships.js";
+import AdminRoute from "./components/AdminRoute.js";
+import JobsPage from "./pages/JobsPage.js";
+import ScholarshipsPage from './pages/ScholarshipsPage';
+import InternshipsPage from './pages/InternshipsPage';
 
-// const ProtectedRoute = ({ children }) => {
-//   const { isAuthenticated } = useAuth();
-//   return isAuthenticated ? children : <Navigate to="/signin" />;
-// };
 
 function App() {
   return (
@@ -34,30 +34,22 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/profile" element={<UserProfile />} />
-          <Route path="/dltjob" element={<JobsDelete />} />
-          <Route path="/postjob" element={<PostJobForm />} />
-          <Route path="/jobs/:id" element={<JobDetail />} />
-          <Route path="/postscholarship" element={<PostScholarshipForm />} />
-          <Route path="/dltscholarship" element={<DeleteScholarships />} />
-          <Route path="/postinternship" element={<PostInternshipForm />} />
-          <Route path="/dltinternship" element={<DeleteInternships />} />
+          {/* <Route path="/jobs/:id" element={<JobDetail />} /> */}
+          <Route path='/jobs' element={<JobsPage />} />
+ <Route path="/scholarships" element={<ScholarshipsPage />} />
+  <Route path="/internships" element={<InternshipsPage />} />
+
+
+
+            <Route path="/dltjob" element={<AdminRoute><JobsDelete /></AdminRoute>} />
+          <Route path="/postjob" element={<AdminRoute><PostJobForm /></AdminRoute>} />
+          <Route path="/postscholarship" element={<AdminRoute><PostScholarshipForm /></AdminRoute>} />
+          <Route path="/dltscholarship" element={<AdminRoute><DeleteScholarships /></AdminRoute>} />
+          <Route path="/postinternship" element={<AdminRoute><PostInternshipForm /> </AdminRoute>} />
+          <Route path="/dltinternship" element={<AdminRoute><DeleteInternships /></AdminRoute>} />
            
-                    <Route path="/admin" element={  <Dashboard />  }/>
+                 <Route path="/admin"element={ <AdminRoute><Dashboard /></AdminRoute>}/>
 
-          {/* Protected Routes */}
-          {/* <Route
-            path="/post-job"
-            element={
-              <ProtectedRoute>
-                <PostJobForm />
-              </ProtectedRoute>
-            }
-          /> */}
-
-      
-
-
-          {/* Redirect Unknown Routes */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />

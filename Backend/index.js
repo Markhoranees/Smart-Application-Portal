@@ -5,7 +5,9 @@ import connectDB from './config/db.js';
 import JobRoutes from './routes/JobRoutes.js';
 import ScholarshipRoutes from './routes/ScholarshipRoutes.js';
 import InternshipRoutes from './routes/InternshipRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 import path from 'path';
+import admin from './middlewares/admin.js';
 
 
 dotenv.config();
@@ -33,6 +35,8 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
     app.use('/api/jobs', JobRoutes);
     app.use('/api/scholarships', ScholarshipRoutes);
     app.use('/api/internships', InternshipRoutes);
+
+app.use("/api/admin", admin, adminRoutes);
 
     // Base Route
     app.get('/', (req, res) => {

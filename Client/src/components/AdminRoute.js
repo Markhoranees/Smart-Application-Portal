@@ -9,9 +9,10 @@ const AdminRoute = ({ children }) => {
   if (!isLoaded) return <div>Loading...</div>;
 
   if (user && user.publicMetadata?.role === 'admin') {
-    return children;
-  }
+     return <Navigate to="/signin" />;
 
-  return <Navigate to="/signin" />;
+  }
+    return children;
+ 
 };
 export default AdminRoute;

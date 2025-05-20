@@ -1,0 +1,111 @@
+.internships-list-section {
+  background-color: #e8f5e9; /* soft green */
+  min-height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.internships-header {
+  text-align: center;
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: #2e7d32;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+.internships-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2rem;
+}
+
+.internship-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(46, 125, 50, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 280px;
+}
+
+.internship-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(46, 125, 50, 0.25);
+}
+
+.internship-image-container {
+  flex-shrink: 0;
+  background: #c8e6c9;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1.5px solid #a5d6a7;
+}
+
+.internship-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.internship-card:hover .internship-image {
+  transform: scale(1.05);
+}
+
+.no-image-text {
+  font-size: 1rem;
+  color: #8bc34a;
+  font-style: italic;
+}
+
+.internship-details {
+  padding: 1.5rem 1.75rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.internship-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2e7d32;
+}
+
+.internship-company {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #4a6572;
+}
+
+.internship-description {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #263238;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.internship-closing-date {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2e7d32;
+  user-select: none;
+}

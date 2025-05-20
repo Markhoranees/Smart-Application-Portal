@@ -1,28 +1,28 @@
 // routes/adminRoutes.js
 import express from 'express';
-import adminMiddleware from '../middlewares/adminMiddleware.js';
-import { getAllJobs, createJob, updateJob, deleteJob } from '../controllers/jobsController.js';
-import { getAllInternships, createInternship, updateInternship, deleteInternship } from '../controllers/internshipsController.js';
-import { getAllScholarships, createScholarship, updateScholarship, deleteScholarship } from '../controllers/scholarshipsController.js';
+import admin from '../middlewares/admin.js';
+import { getAllJobs, createJob,  deleteJobById } from '../controllers/jobsController.js';
+import { getAllInternships, createInternship,  deleteInternshipById } from '../controllers/internshipsController.js';
+import { getAllScholarships, createScholarship, deleteScholarshipById } from '../controllers/scholarshipsController.js';
 
 const router = express.Router();
 
+
+
 // Jobs Routes
-router.get('/jobs', adminMiddleware, getAllJobs);
-router.post('/jobs', adminMiddleware, createJob);
-router.put('/jobs/:id', adminMiddleware, updateJob);
-router.delete('/jobs/:id', adminMiddleware, deleteJob);
+router.get('/jobs', admin, getAllJobs);
+router.post('/jobs', admin, createJob);
+
+router.delete('/jobs/:id', admin, deleteJobById);
 
 // Internships Routes
-router.get('/internships', adminMiddleware, getAllInternships);
-router.post('/internships', adminMiddleware, createInternship);
-router.put('/internships/:id', adminMiddleware, updateInternship);
-router.delete('/internships/:id', adminMiddleware, deleteInternship);
+router.get('/internships', admin, getAllInternships);
+router.post('/internships', admin, createInternship);
+router.delete('/internships/:id', admin, deleteInternshipById);
 
 // Scholarships Routes
-router.get('/scholarships', adminMiddleware, getAllScholarships);
-router.post('/scholarships', adminMiddleware, createScholarship);
-router.put('/scholarships/:id', adminMiddleware, updateScholarship);
-router.delete('/scholarships/:id', adminMiddleware, deleteScholarship);
+router.get('/scholarships', admin, getAllScholarships);
+router.post('/scholarships', admin, createScholarship);
+router.delete('/scholarships/:id', admin, deleteScholarshipById);
 
 export default router;

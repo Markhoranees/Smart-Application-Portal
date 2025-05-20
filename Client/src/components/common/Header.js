@@ -1,43 +1,32 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../assets/styles/Header.css";
 import { useUser, UserButton } from "@clerk/clerk-react";
 
 const Header = () => {
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
     document.body.style.overflow = !menuOpen ? "hidden" : "auto";
   };
 
-  const toggleDropdown = (name, e) => {
-    e.stopPropagation();
-    setActiveDropdown(activeDropdown === name ? null : name);
-  };
-
   const closeMenu = () => {
     setMenuOpen(false);
-    setActiveDropdown(null);
     document.body.style.overflow = "auto";
   };
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (!e.target.closest(".dropdown")) setActiveDropdown(null);
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (!isLoaded) return null;
+
+  const isAdmin = user?.publicMetadata?.role === "admin";
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
@@ -56,45 +45,57 @@ const Header = () => {
         <nav className={menuOpen ? "nav open" : "nav"}>
           <ul>
             <li>
-              <Link to="/" onClick={closeMenu}>Home</Link>
+              <Link to="/" onClick={closeMenu}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/about" onClick={closeMenu}>About</Link>
+              <Link to="/jobs" onClick={closeMenu}>
+                Jobs
+              </Link>
             </li>
 
-            <li className="dropdown">
-              <button className="dropdown-toggle" onClick={(e) => toggleDropdown("jobs", e)}>
-                Find Jobs
-              </button>
-              <ul className={`dropdown-menu ${activeDropdown === "jobs" ? "show" : ""}`}>
-                <li><Link to="/joblist" onClick={closeMenu}>Job List</Link></li>
-                <li><Link to="/jobdetail" onClick={closeMenu}>Job Detail</Link></li>
-                <li><Link to="/internships" onClick={closeMenu}>Internships</Link></li>
-              </ul>
+
+            <li>
+              <Link to="/scholarships" onClick={closeMenu}>
+                Scholarships
+              </Link>
+            </li>
+            <li>
+              <Link to="/internships" onClick={closeMenu}>
+                Internships
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" onClick={closeMenu}>
+                About
+              </Link>
             </li>
 
-            <li className="dropdown">
-              <button className="dropdown-toggle" onClick={(e) => toggleDropdown("pages", e)}>
-                More Pages
-              </button>
-              <ul className={`dropdown-menu ${activeDropdown === "pages" ? "show" : ""}`}>
-                <li><Link to="/scholarships" onClick={closeMenu}>Scholarship</Link></li>
-                <li><Link to="/experts" onClick={closeMenu}>Experts</Link></li>
-              </ul>
-            </li>
+            {/* Admin Dashboard link visible only to admin in mobile menu */}
+            {isAdmin && (
+              <li>
+                <Link to="/admin" onClick={closeMenu} className="admin-link-mobile">
+                  Admin Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
 
         {/* Auth Buttons */}
         <div className="auth-buttons">
-          {/* Always show Admin Dashboard link */}
-          <Link to="/admin" className="btn admin-link">
-            Admin Dashboard
-          </Link>
+          {/* Admin Dashboard link for desktop */}
+          {isAdmin && (
+            <Link to="/admin" className="btn admin-link-desktop">
+              Admin Dashboard
+            </Link>
+          )}
 
-          {/* If no user show Sign In, else show profile */}
           {!user ? (
-            <Link to="/signin" className="btn">Sign In</Link>
+            <Link to="/signin" className="btn">
+              Sign In
+            </Link>
           ) : (
             <>
               <UserButton afterSignOutUrl="/signin" />
@@ -110,3 +111,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
