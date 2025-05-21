@@ -9,7 +9,8 @@ const ScholarshipsList = ({ scholarships = [] }) => {
         <h1 className="scholarships-header">
           Available Scholarships
         </h1>
-        
+
+
         <div className="scholarships-grid">
           {scholarships.map((sch) => {
             const id = sch._id || sch.id;
@@ -18,11 +19,7 @@ const ScholarshipsList = ({ scholarships = [] }) => {
               : `http://localhost:5000/uploads/${sch.image}`;
 
             return (
-              <Link
-                to={`/scholarships/${id}`}
-                key={id}
-                className="scholarship-card"
-              >
+                  <Link to={`/scholarships/${id}`} key={id} className="scholarship-card">
                 <div className="scholarship-image-container">
                   {sch.image ? (
                     <img

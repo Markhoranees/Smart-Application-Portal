@@ -1,0 +1,77 @@
+.internship-detail {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 1.8rem 2rem;
+  background: #fefefe;
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.07);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 0.4rem;
+}
+
+.company {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #27ae60;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.location {
+  font-size: 1rem;
+  font-style: italic;
+  color: #95a5a6;
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.description, .requirements {
+  margin-bottom: 1.7rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.deadline {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #c0392b;
+  margin-bottom: 2.3rem;
+}
+
+.apply-button {
+  display: block;
+  width: 210px;
+  margin: 0 auto;
+  padding: 0.9rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  background-color: #27ae60;
+  color: #fff;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+  background-color: #1e8449;
+  cursor: pointer;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 3rem;
+}

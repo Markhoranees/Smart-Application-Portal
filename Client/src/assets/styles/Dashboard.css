@@ -1,75 +1,77 @@
-/* Dashboard.css */
-
-.dashboard-container {
-  max-width: 900px;
-  margin: 80px auto 40px;
-  padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
+.job-detail {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 1.8rem 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+  font-family: 'Open Sans', sans-serif;
+  color: #1a1a1a;
 }
 
-.dashboard-title {
-  font-size: 2.5rem;
+.title {
+  font-size: 2.3rem;
   font-weight: 700;
-  margin-bottom: 8px;
-  color: #1cb4c6;
-}
-
-.dashboard-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  color: #555;
-}
-
-.dashboard-grid {
-  display: flex;
-  gap: 30px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.dashboard-card {
-  flex: 1 1 280px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 25px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  background-color: #f9f9f9;
+  color: #2c3e50;
+  margin-bottom: 0.3rem;
   text-align: center;
-  transition: transform 0.2s ease;
-  cursor: default;
 }
 
-.dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-}
-
-.dashboard-card-title {
+.company {
   font-size: 1.5rem;
-  margin-bottom: 15px;
-  color: #0d859d;
-}
-
-.dashboard-card-desc {
-  font-size: 1rem;
-  margin-bottom: 25px;
-  color: #444;
-}
-
-.dashboard-btn {
-  background-color: #1cb4c6;
-  border: none;
-  padding: 10px 20px;
-  color: white;
   font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  color: #3498db;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.dashboard-btn:hover {
-  background-color: #1592a0;
+.location {
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #7f8c8d;
+}
+
+.description, .requirements {
+  margin-bottom: 1.8rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #34495e;
+}
+
+.deadline {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #e74c3c;
+  margin-bottom: 2rem;
+}
+
+.apply-button {
+  display: block;
+  width: 220px;
+  margin: 0 auto;
+  padding: 0.85rem 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
   color: white;
+  border-radius: 30px;
   text-decoration: none;
+  transition: background 0.4s ease;
+}
+
+.apply-button:hover {
+  background: linear-gradient(90deg, #2980b9 0%, #2471a3 100%);
+  cursor: pointer;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #555;
+  margin-top: 3rem;
 }

@@ -1,80 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Spinner, Alert, Button } from "react-bootstrap";
-import { fetchJobDetails } from "../../api/jobs";
-import "../../assets/styles/JobDetail.css";
+import React, { useEffect, useState } from 'react';
+import '../../assets/styles/JobDetail.css'; // Import your CSS file for styling
 
-
-const JobDetail = () => {
-  const { id } = useParams();
+const JobDetail = ({ id }) => {
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getJob = async () => {
-      try {
-        const data = await fetchJobDetails(id);
+    fetch(`http://localhost:5000/api/jobs/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch job details');
+        return res.json();
+      })
+      .then(data => {
         setJob(data);
-        setError(null);
-      } catch {
-        setError("Failed to load job details.");
-      } finally {
         setLoading(false);
-      }
-    };
-    getJob();
+      })
+      .catch(err => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, [id]);
 
-  if (loading)
-    return (
-      <div className="job-detail-loading">
-        <Spinner animation="border" variant="primary" />
-        <p>Loading job details...</p>
-      </div>
-    );
-
-  if (error) return <Alert variant="danger" className="job-detail-error">{error}</Alert>;
-
-  if (!job) return null;
+  if (loading) return <p className="loading">Loading job details...</p>;
+  if (error) return <p className="error">Error: {error}</p>;
+  if (!job) return <p className="error">No job found.</p>;
 
   return (
-    <div className="job-detail-container container">
-      <h2 className="job-detail-title">{job.jobTitle}</h2>
-      {job.image ? (
-        <img src={job.image} alt={job.company} className="job-detail-image" />
-      ) : (
-        <div className="job-image-placeholder">No Image Available</div>
-      )}
-      <p className="job-company">
-        <strong>Company:</strong> {job.company}
-      </p>
-      <p className="job-location">
-        <strong>Location:</strong> {job.location || "N/A"}
-      </p>
-      <p className="job-category">
-        <strong>Category:</strong> {job.category || "N/A"}
-      </p>
-      <p className="job-description">{job.description}</p>
-
-      {/* Eligibility and terms could come from API; using placeholders here */}
-      <h4>Eligibility Criteria</h4>
-      <ul className="job-eligibility">
-        {(job.eligibility || ["Bachelor’s degree in relevant field", "Experience preferred"]).map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
-
-      <h4>Terms & Conditions</h4>
-      <ul className="job-terms">
-        {(job.terms || ["Standard company policies apply"]).map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
-
-      <Button className="btn-apply" href={`mailto:${job.applicationEmail}`}>
+    <div className="job-detail">
+      <h2 className="title">{job.title}</h2>
+      <h3 className="company">{job.company}</h3>
+      <p className="location"><strong>Location:</strong> {job.location}</p>
+      <div className="description">
+        <p><strong>Description:</strong></p>
+        <p>{job.description}</p>
+      </div>
+      <div className="requirements">
+        <p><strong>Requirements:</strong></p>
+        <p>{job.requirements}</p>
+      </div>
+      <p className="deadline"><strong>Apply By:</strong> {new Date(job.deadline).toLocaleDateString()}</p>
+      <a
+        className="apply-button"
+        href={job.applyLink}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Apply Now
-      </Button>
+      </a>
     </div>
   );
 };

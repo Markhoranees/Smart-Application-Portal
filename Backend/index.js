@@ -52,3 +52,5 @@ app.use("/api/admin", admin, adminRoutes);
     process.exit(1); // Exit if DB connection or server setup fails
   }
 })();
+
+

@@ -1,0 +1,61 @@
+.scholarship-detail {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f9faff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.title {
+  text-align: center;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 3px 10px rgba(44, 62, 80, 0.2);
+}
+
+.info p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.9rem;
+  color: #34495e;
+}
+
+.apply-button {
+  display: block;
+  margin: 2rem auto 0;
+  text-align: center;
+  background-color: #2980b9;
+  color: white;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  width: max-content;
+}
+
+.apply-button:hover {
+  background-color: #1f618d;
+  cursor: pointer;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 3rem;
+}
