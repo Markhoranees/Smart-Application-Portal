@@ -2,13 +2,15 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
+
 import JobRoutes from './routes/JobRoutes.js';
 import ScholarshipRoutes from './routes/ScholarshipRoutes.js';
 import InternshipRoutes from './routes/InternshipRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import applyRoutes from './routes/apply.js';  // <-- Import apply route
+
 import path from 'path';
 import admin from './middlewares/admin.js';
-
 
 dotenv.config();
 
@@ -28,15 +30,17 @@ const app = express();
     }));
     app.use(express.json());
 
+    // Serve static files from uploads folder
+    app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
-
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
     // API Routes
     app.use('/api/jobs', JobRoutes);
     app.use('/api/scholarships', ScholarshipRoutes);
     app.use('/api/internships', InternshipRoutes);
 
-app.use("/api/admin", admin, adminRoutes);
+    app.use('/api/apply', applyRoutes);   // <-- Apply route with multer upload
+
+    app.use('/api/admin', admin, adminRoutes);
 
     // Base Route
     app.get('/', (req, res) => {
@@ -52,5 +56,3 @@ app.use("/api/admin", admin, adminRoutes);
     process.exit(1); // Exit if DB connection or server setup fails
   }
 })();
-
-

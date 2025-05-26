@@ -14,4 +14,4 @@ const Home = () => {
   );
 };
 
-export default Home; // ✅ Correctly exporting the Home component
+export default Home; 

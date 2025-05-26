@@ -7,7 +7,7 @@ dotenv.config();
 const connectDB = async () => {
   try {
     // Use the connection URI from the environment variable or default to the local one
-    const apiKey = process.env.MONGO_URI || "mongodb://localhost:27017/";
+    const apiKey =  "mongodb://localhost:27017/";
     
     // Connect to MongoDB
     await mongoose.connect(apiKey, {
