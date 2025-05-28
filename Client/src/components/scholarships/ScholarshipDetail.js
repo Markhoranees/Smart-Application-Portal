@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../../assets/styles/ScholarshipDetail.css'; // Adjust the path as necessary
+import ApplicationForm from '../ApplicationForm';  // Adjust path as needed
+import '../../assets/styles/ScholarshipDetail.css';
 
 const ScholarshipDetail = ({ id }) => {
   const [scholarship, setScholarship] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showApplyForm, setShowApplyForm] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/scholarships/${id}`)
@@ -42,14 +44,22 @@ const ScholarshipDetail = ({ id }) => {
         <p><strong>Deadline:</strong> {new Date(scholarship.deadline).toLocaleDateString()}</p>
         <p><strong>Amount:</strong> {scholarship.amount}</p>
       </div>
-      <a
-        className="apply-button"
-        href={scholarship.applyLink}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Apply Now
-      </a>
+
+      {!showApplyForm && (
+        <button
+          className="apply-button"
+          onClick={() => setShowApplyForm(true)}
+        >
+          Apply Now
+        </button>
+      )}
+
+      {showApplyForm && (
+        <ApplicationForm
+          category="scholarship"
+          appliedForId={scholarship._id || scholarship.id}
+        />
+      )}
     </div>
   );
 };

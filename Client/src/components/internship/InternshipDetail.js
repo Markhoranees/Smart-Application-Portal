@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../../assets/styles/InternshipDetail.css'; // Import your CSS file for styling
+import ApplicationForm from '../ApplicationForm';  // Adjust path as needed
+import '../../assets/styles/InternshipDetail.css';
 
 const InternshipDetail = ({ id }) => {
   const [internship, setInternship] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showApplyForm, setShowApplyForm] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/internships/${id}`)
@@ -40,14 +42,22 @@ const InternshipDetail = ({ id }) => {
         <p>{internship.requirements}</p>
       </div>
       <p className="deadline"><strong>Apply By:</strong> {new Date(internship.deadline).toLocaleDateString()}</p>
-      <a
-        className="apply-button"
-        href={internship.applyLink}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Apply Now
-      </a>
+
+      {!showApplyForm && (
+        <button
+          className="apply-button"
+          onClick={() => setShowApplyForm(true)}
+        >
+          Apply Now
+        </button>
+      )}
+
+      {showApplyForm && (
+        <ApplicationForm
+          category="internship"
+          appliedForId={internship._id || internship.id}
+        />
+      )}
     </div>
   );
 };

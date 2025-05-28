@@ -43,17 +43,12 @@ const JobsList = ({ jobs = [] }) => {
                   <p className="job-company mb-1 text-gray-600 italic font-medium">
                     {job.company || "Unknown Company"}
                   </p>
-                  <p className="job-location mb-1 text-gray-500 text-sm">
-                    <strong>Location:</strong> {job.location || "N/A"}
-                  </p>
+                 
                   <p className="job-category mb-3 text-gray-500 text-sm">
                     <strong>Category:</strong> {job.category || "N/A"}
                   </p>
 
-                  <p className="job-description text-gray-700 flex-grow overflow-hidden line-clamp-3 mb-3">
-                    {job.description || "No description available."}
-                  </p>
-
+                 
                   {job.closingDate && (
                     <p className="job-closing-date text-sm font-semibold text-gray-600">
                       Closing Date:{" "}

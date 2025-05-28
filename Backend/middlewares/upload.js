@@ -1,26 +1,14 @@
-import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
+import multer from "multer";
+import path from "path";
 
-// To get __dirname in ES module:
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Ensure uploads folder exists
-const uploadDir = path.join(__dirname, '..', 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
-
+// Store uploads in /uploads folder with timestamped filenames
 const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, uploadDir);
+  destination: (req, file, cb) => cb(null, path.join(process.cwd(), "uploads")),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    const filename = Date.now() + "-" + Math.round(Math.random() * 1e9) + ext;
+    cb(null, filename);
   },
-  filename(req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  }
 });
 
 const upload = multer({ storage });

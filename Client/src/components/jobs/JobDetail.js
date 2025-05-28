@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../../assets/styles/JobDetail.css'; // Import your CSS file for styling
+import ApplicationForm from '../ApplicationForm'; // Adjust path accordingly
+import '../../assets/styles/JobDetail.css';
 
 const JobDetail = ({ id }) => {
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/jobs/${id}`)
@@ -39,15 +41,18 @@ const JobDetail = ({ id }) => {
         <p><strong>Requirements:</strong></p>
         <p>{job.requirements}</p>
       </div>
-      <p className="deadline"><strong>Apply By:</strong> {new Date(job.deadline).toLocaleDateString()}</p>
-      <a
-        className="apply-button"
-        href={job.applyLink}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Apply Now
-      </a>
+      <p className="deadline"><strong>Apply By:</strong> {new Date(job.closingDate).toLocaleDateString()}</p>
+
+      {!showForm ? (
+        <button className="apply-button" onClick={() => setShowForm(true)}>
+          Apply Now
+        </button>
+      ) : (
+        <div className="application-form-container">
+          <h3>Application Form</h3>
+          <ApplicationForm category="job" appliedForId={job._id} />
+        </div>
+      )}
     </div>
   );
 };

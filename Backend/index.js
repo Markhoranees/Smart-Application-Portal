@@ -2,13 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
-
 import JobRoutes from './routes/JobRoutes.js';
 import ScholarshipRoutes from './routes/ScholarshipRoutes.js';
 import InternshipRoutes from './routes/InternshipRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
-import applyRoutes from './routes/apply.js';  // <-- Import apply route
-
+import applicationRoutes from './routes/applicationRoutes.js';  // <-- Import apply route
 import path from 'path';
 import admin from './middlewares/admin.js';
 
@@ -38,7 +36,7 @@ const app = express();
     app.use('/api/scholarships', ScholarshipRoutes);
     app.use('/api/internships', InternshipRoutes);
 
-    app.use('/api/apply', applyRoutes);   // <-- Apply route with multer upload
+    app.use('/api/applications', applicationRoutes);   // <-- Apply route with multer upload
 
     app.use('/api/admin', admin, adminRoutes);
 

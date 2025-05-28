@@ -32,7 +32,10 @@ export const createJob = async (req, res) => {
       location,
       category,
       description,
-      applicationEmail,
+      email,
+      skillsRequired,
+      onsite,
+      salary,
       closingDate,
       // Removed companyDetailsName, website, tagline, jobTags
     } = req.body;
@@ -44,7 +47,10 @@ export const createJob = async (req, res) => {
       location,
       category,
       description,
-      applicationEmail,
+      email,
+       skillsRequired,
+      onsite,
+      salary,
       closingDate: closingDate ? new Date(closingDate) : undefined,
       image: req.file ? req.file.filename : null,  // multer adds file info here
     });
