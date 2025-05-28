@@ -19,9 +19,19 @@ const PostScholarshipForm = () => {
 
       formData.append("title", data.title);
       formData.append("provider", data.provider);
+      formData.append("educationLevel", data.educationLevel || "");
+      formData.append("educationField", data.educationField || "");
+      
+      // eligibleCountries should be sent as an array; split input string by commas
+      if (data.eligibleCountries) {
+        const countriesArray = data.eligibleCountries.split(",").map(c => c.trim());
+        formData.append("eligibleCountries", JSON.stringify(countriesArray));
+      }
+
       formData.append("description", data.description);
       formData.append("applicationLink", data.applicationLink);
       formData.append("eligibility", data.eligibility);
+      formData.append("gpaRequirement", data.gpaRequirement || "");
       formData.append("closingDate", data.closingDate || "");
 
       if (data.image && data.image.length > 0) {
@@ -90,6 +100,39 @@ const PostScholarshipForm = () => {
           </div>
 
           <div className="mb-3">
+            <label className="form-label">Education Level</label>
+            <input
+              type="text"
+              className="form-control"
+              {...register("educationLevel")}
+              disabled={loading}
+              placeholder="e.g. Bachelor, Master, PhD"
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Field of Study</label>
+            <input
+              type="text"
+              className="form-control"
+              {...register("educationField")}
+              disabled={loading}
+              placeholder="e.g. Engineering, Medicine"
+            />
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">Eligible Countries (comma separated)</label>
+            <input
+              type="text"
+              className="form-control"
+              {...register("eligibleCountries")}
+              disabled={loading}
+              placeholder="e.g. Pakistan, USA, Canada"
+            />
+          </div>
+
+          <div className="mb-3">
             <label className="form-label">Description <span className="required">*</span></label>
             <textarea
               className={`form-control ${errors.description ? "is-invalid" : ""}`}
@@ -118,9 +161,23 @@ const PostScholarshipForm = () => {
               rows="3"
               {...register("eligibility", { required: "Eligibility is required" })}
               disabled={loading}
-              placeholder="Enter eligibility criteria, separated by commas"
+              placeholder="Enter eligibility criteria"
             ></textarea>
             {errors.eligibility && <div className="invalid-feedback">{errors.eligibility.message}</div>}
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label">GPA Requirement</label>
+            <input
+              type="number"
+              step="0.01"
+              min="0"
+              max="4"
+              className="form-control"
+              {...register("gpaRequirement")}
+              disabled={loading}
+              placeholder="e.g. 3.5"
+            />
           </div>
 
           <div className="mb-3">

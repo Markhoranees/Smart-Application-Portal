@@ -23,18 +23,35 @@ export const getScholarshipById = async (req, res) => {
   }
 };
 
+// Create a new scholarship
 export const createScholarship = async (req, res) => {
   try {
-    const { title, provider, description, applicationLink, eligibility, closingDate } = req.body;
+    const {
+      title,
+      provider,
+      educationLevel,
+      educationField,
+      eligibleCountries,
+      description,
+      applicationLink,
+      eligibility,
+      gpaRequirement,
+      closingDate,
+    } = req.body;
 
     const newScholarship = new Scholarship({
       title,
       provider,
+      educationLevel,
+      educationField,
+      // Expecting eligibleCountries as JSON string or array
+      eligibleCountries: typeof eligibleCountries === "string" ? JSON.parse(eligibleCountries) : eligibleCountries,
       description,
       applicationLink,
       eligibility,
+      gpaRequirement: gpaRequirement ? Number(gpaRequirement) : undefined,
       closingDate: closingDate ? new Date(closingDate) : undefined,
-      image: req.file ? req.file.filename : null, // multer adds the file info here
+      image: req.file ? req.file.filename : null,
     });
 
     const savedScholarship = await newScholarship.save();
@@ -43,7 +60,6 @@ export const createScholarship = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
-
 
 // Delete a scholarship by ID
 export const deleteScholarshipById = async (req, res) => {

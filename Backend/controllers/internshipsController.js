@@ -28,27 +28,43 @@ export const createInternship = async (req, res) => {
       title,
       company,
       location,
-      category,
+      duration,
+      educationLevel,
+      educationField,
+      remote,
+      skillsRequired, // expect as comma separated string from frontend
       description,
       applicationLink,
       closingDate,
     } = req.body;
 
-    // Image upload handling
     if (!req.file) {
       return res.status(400).json({ message: "Image is required" });
     }
-console.log('Using Internship schema fields:', Object.keys(Internship.schema.obj));
+
+    // Convert skillsRequired from comma-separated string to array if it's a string
+    let skillsArray = [];
+    if (skillsRequired) {
+      if (typeof skillsRequired === "string") {
+        skillsArray = skillsRequired.split(",").map(skill => skill.trim()).filter(Boolean);
+      } else if (Array.isArray(skillsRequired)) {
+        skillsArray = skillsRequired;
+      }
+    }
 
     const newInternship = new Internship({
       title,
       company,
       location,
-      category,
+      duration,
+      educationLevel,
+      educationField,
+      remote: remote === "true" || remote === true, // Convert string boolean to actual boolean
+      skillsRequired: skillsArray,
       description,
       applicationLink,
       closingDate: closingDate ? new Date(closingDate) : undefined,
-      image: req.file.filename,  // Store the image filename
+      image: req.file.filename,
     });
 
     const savedInternship = await newInternship.save();

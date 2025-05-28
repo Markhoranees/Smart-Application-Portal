@@ -9,6 +9,8 @@ import adminRoutes from './routes/adminRoutes.js';
 import applicationRoutes from './routes/applicationRoutes.js';  // <-- Import apply route
 import path from 'path';
 import admin from './middlewares/admin.js';
+import recommendationRoutes from "./routes/recommendationRoutes.js";
+
 
 dotenv.config();
 
@@ -37,6 +39,7 @@ const app = express();
     app.use('/api/internships', InternshipRoutes);
 
     app.use('/api/applications', applicationRoutes);   // <-- Apply route with multer upload
+app.use("/api", recommendationRoutes);
 
     app.use('/api/admin', admin, adminRoutes);
 

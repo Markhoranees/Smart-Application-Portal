@@ -32,16 +32,28 @@ const InternshipDetail = ({ id }) => {
     <div className="internship-detail">
       <h2 className="title">{internship.title}</h2>
       <h3 className="company">{internship.company}</h3>
-      <p className="location"><strong>Location:</strong> {internship.location}</p>
+      <p className="location"><strong>Location:</strong> {internship.location || 'Not specified'}</p>
+      <p className="duration"><strong>Duration:</strong> {internship.duration || 'Not specified'}</p>
+      <p className="education-level"><strong>Education Level:</strong> {internship.educationLevel || 'Not specified'}</p>
+      <p className="education-field"><strong>Field of Study:</strong> {internship.educationField || 'Not specified'}</p>
+      <p className="remote"><strong>Remote:</strong> {internship.remote ? 'Yes' : 'No'}</p>
+      <div className="skills-required">
+        <strong>Skills Required:</strong>
+        <ul>
+          {(internship.skillsRequired && internship.skillsRequired.length > 0) ? (
+            internship.skillsRequired.map((skill, index) => (
+              <li key={index}>{skill}</li>
+            ))
+          ) : (
+            <li>Not specified</li>
+          )}
+        </ul>
+      </div>
       <div className="description">
         <p><strong>Description:</strong></p>
         <p>{internship.description}</p>
       </div>
-      <div className="requirements">
-        <p><strong>Requirements:</strong></p>
-        <p>{internship.requirements}</p>
-      </div>
-      <p className="deadline"><strong>Apply By:</strong> {new Date(internship.deadline).toLocaleDateString()}</p>
+      <p className="deadline"><strong>Apply By:</strong> {new Date(internship.closingDate).toLocaleDateString()}</p>
 
       {!showApplyForm && (
         <button

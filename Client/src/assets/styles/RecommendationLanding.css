@@ -1,0 +1,48 @@
+.recommendation-landing-container {
+  width: 100vw;
+  height: 60vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e7e1be;
+  text-align: center;
+}
+
+.recommendation-landing-container h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+  color: #2c3e50;
+  max-width: 90%;
+}
+
+.recommendation-landing-container p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+  color: #34495e;
+  line-height: 1.5;
+  max-width: 700px;
+}
+
+.start-btn {
+  background-color: #a87348;
+  color: white;
+  font-size: 1.3rem;
+  padding: 18px 50px;
+
+  border-radius: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 300px;
+  width: 100%;
+}
+
+.start-btn:hover {
+    color: #2c3e50;
+  background-color: #84eb65;
+}

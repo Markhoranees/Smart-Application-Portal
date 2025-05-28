@@ -39,10 +39,14 @@ const ScholarshipDetail = ({ id }) => {
         />
       )}
       <div className="info">
+        <p><strong>Provider:</strong> {scholarship.provider}</p>
         <p><strong>Description:</strong> {scholarship.description}</p>
         <p><strong>Eligibility:</strong> {scholarship.eligibility}</p>
-        <p><strong>Deadline:</strong> {new Date(scholarship.deadline).toLocaleDateString()}</p>
-        <p><strong>Amount:</strong> {scholarship.amount}</p>
+        <p><strong>Education Level:</strong> {scholarship.educationLevel || 'N/A'}</p>
+        <p><strong>Field of Study:</strong> {scholarship.educationField || 'N/A'}</p>
+        <p><strong>Eligible Countries:</strong> {scholarship.eligibleCountries?.length ? scholarship.eligibleCountries.join(', ') : 'N/A'}</p>
+        <p><strong>GPA Requirement:</strong> {scholarship.gpaRequirement !== undefined ? scholarship.gpaRequirement : 'N/A'}</p>
+        <p><strong>Deadline:</strong> {scholarship.closingDate ? new Date(scholarship.closingDate).toLocaleDateString() : 'N/A'}</p>
       </div>
 
       {!showApplyForm && (

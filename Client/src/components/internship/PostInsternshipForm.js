@@ -21,11 +21,21 @@ const PostInternshipForm = () => {
       formData.append("company", data.company);
       formData.append("location", data.location || "");
       formData.append("category", data.category || "");
+      formData.append("duration", data.duration || "");
+      formData.append("educationLevel", data.educationLevel || "");
+      formData.append("educationField", data.educationField || "");
+      formData.append("remote", data.remote === "true");  // checkbox or select value
+      // skillsRequired as comma-separated string, convert to array backend or send multiple form fields
+      if (data.skillsRequired) {
+        // send as a single comma-separated string, backend should parse it
+        formData.append("skillsRequired", data.skillsRequired);
+      } else {
+        formData.append("skillsRequired", "");
+      }
       formData.append("description", data.description);
       formData.append("applicationLink", data.applicationLink);
       formData.append("closingDate", data.closingDate);
 
-      // Image is required
       if (!data.image || data.image.length === 0) {
         setError("Image upload is required");
         setLoading(false);
@@ -107,12 +117,57 @@ const PostInternshipForm = () => {
             <label>Category</label>
             <select {...register("category")} disabled={loading}>
               <option value="">Select category</option>
-              <option value="IT">IT</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Design">Design</option>
-              <option value="Engineering">Engineering</option>
-              <option value="Other">Other</option>
+              <option value="full-time">Full-time</option>
+              <option value="part-time">Part-time</option>
+              <option value="contract">Contract</option>
+              <option value="other">Other</option>
             </select>
+          </div>
+
+          <div className="form-group">
+            <label>Duration</label>
+            <input
+              type="text"
+              {...register("duration")}
+              disabled={loading}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Education Level</label>
+            <input
+              type="text"
+              {...register("educationLevel")}
+              disabled={loading}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Education Field</label>
+            <input
+              type="text"
+              {...register("educationField")}
+              disabled={loading}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Remote</label>
+            <select {...register("remote")} disabled={loading}>
+              <option value="">Select</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Skills Required (comma separated)</label>
+            <input
+              type="text"
+              {...register("skillsRequired")}
+              disabled={loading}
+              placeholder="e.g. JavaScript, React, Node.js"
+            />
           </div>
 
           <div className="form-group">
