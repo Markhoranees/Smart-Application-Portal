@@ -1,7 +1,5 @@
 import React from "react";
 import "../assets/styles/About.css";
-
-
 import aboutImage from "../assets/image/about.png";
 import profileImage from "../assets/image/profile1.png";
 

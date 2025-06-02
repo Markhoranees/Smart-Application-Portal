@@ -10,14 +10,14 @@
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
+ 
+  
   }
   
   .footer-section {
     flex: 1;
     min-width: 250px;
-    margin-bottom: 20px;
+;
   }
   
   .footer-section h3 {

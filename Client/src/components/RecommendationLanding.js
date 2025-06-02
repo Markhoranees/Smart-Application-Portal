@@ -5,10 +5,6 @@ import "../assets/styles/RecommendationLanding.css"; // adjust the path as neces
 const RecommendationLanding = () => {
   const navigate = useNavigate();
 
-  const handleStart = () => {
-    navigate("/recommendations/form"); // adjust route as per your routing setup
-  };
-
   return (
     <div className="recommendation-landing-container">
       <h1>Welcome to Your Career Recommendation System</h1>
@@ -17,7 +13,10 @@ const RecommendationLanding = () => {
         your education, skills, and preferences. Save time and discover
         opportunities tailored just for you!
       </p>
-      <button className="start-btn" onClick={handleStart}>
+      <button
+        className="start-btn"
+        onClick={() => navigate("/recomendationForm")}
+      >
         Get Your Recommendations
       </button>
     </div>

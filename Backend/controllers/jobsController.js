@@ -25,6 +25,7 @@ export const getAllJobs = async (req, res) => {
 
 // Post a new job (with file upload handling)
 export const createJob = async (req, res) => {
+  const experienceLevel = req.body.experienceLevel;
   try {
     const {
       title,
@@ -33,11 +34,15 @@ export const createJob = async (req, res) => {
       category,
       description,
       email,
+      experienceLevel,
+      educationLevel,
+      educationField,
       skillsRequired,
       onsite,
+
       salary,
       closingDate,
-      // Removed companyDetailsName, website, tagline, jobTags
+      
     } = req.body;
 
     // Create new Job instance
@@ -48,6 +53,9 @@ export const createJob = async (req, res) => {
       category,
       description,
       email,
+      educationLevel,
+      educationField,
+      experienceLevel, // default to entry-level if not provided
        skillsRequired,
       onsite,
       salary,

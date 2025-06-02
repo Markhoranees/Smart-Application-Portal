@@ -1,58 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import ApplicationForm from '../ApplicationForm'; // Adjust path accordingly
-import '../../assets/styles/JobDetail.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "../../assets/styles/JobDetail.css";
 
-const JobDetail = ({ id }) => {
+const JobDetail = () => {
+  const { id } = useParams(); // Get job ID from URL
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/jobs/${id}`)
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch job details');
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch job details");
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         setJob(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
   }, [id]);
 
-  if (loading) return <p className="loading">Loading job details...</p>;
-  if (error) return <p className="error">Error: {error}</p>;
-  if (!job) return <p className="error">No job found.</p>;
+  if (loading) return <p>Loading job details...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!job) return <p>No job found</p>;
 
   return (
-    <div className="job-detail">
-      <h2 className="title">{job.title}</h2>
-      <h3 className="company">{job.company}</h3>
-      <p className="location"><strong>Location:</strong> {job.location}</p>
-      <div className="description">
-        <p><strong>Description:</strong></p>
-        <p>{job.description}</p>
-      </div>
-      <div className="requirements">
-        <p><strong>Requirements:</strong></p>
-        <p>{job.requirements}</p>
-      </div>
-      <p className="deadline"><strong>Apply By:</strong> {new Date(job.closingDate).toLocaleDateString()}</p>
+    <div className="job-detail-container">
+      <h2>{job.title}</h2>
+      <h3>{job.company}</h3>
+      <p><strong>Location:</strong> {job.location}</p>
+      <p><strong>Category:</strong> {job.category}</p>
+      <p><strong>Skills Required:</strong> {job.skillsRequired}</p>
+      <p><strong>Description:</strong> {job.description}</p>
+      <p><strong>Salary:</strong> {job.salary}</p>
+      <p><strong>Closing Date:</strong> {new Date(job.closingDate).toLocaleDateString()}</p>
 
-      {!showForm ? (
-        <button className="apply-button" onClick={() => setShowForm(true)}>
-          Apply Now
-        </button>
-      ) : (
-        <div className="application-form-container">
-          <h3>Application Form</h3>
-          <ApplicationForm category="job" appliedForId={job._id} />
-        </div>
-      )}
+      <button className="apply-button" onClick={() => alert("Applying for job...")}>
+        Apply Now
+      </button>
     </div>
   );
 };

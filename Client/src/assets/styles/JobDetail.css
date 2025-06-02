@@ -1,77 +1,88 @@
-.job-detail {
-  max-width: 720px;
-  margin: 3rem auto;
-  padding: 1.8rem 2rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
-  font-family: 'Open Sans', sans-serif;
-  color: #1a1a1a;
+.job-detail-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background: #fff;
+  margin-top:50px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  padding: 30px 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1c1c1c;
+  transition: box-shadow 0.3s ease;
 }
 
-.title {
-  font-size: 2.3rem;
+.job-detail-container:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.job-detail-container h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #1c3550;
   font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 0.3rem;
-  text-align: center;
 }
 
-.company {
-  font-size: 1.5rem;
+.job-detail-container h3 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #2a5d84;
   font-weight: 600;
-  color: #3498db;
-  margin-bottom: 1rem;
-  text-align: center;
 }
 
-.location {
-  font-size: 1.1rem;
-  font-style: italic;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #7f8c8d;
-}
-
-.description, .requirements {
-  margin-bottom: 1.8rem;
+.job-detail-container p {
+  font-size: 16px;
   line-height: 1.6;
-  font-size: 1.05rem;
-  color: #34495e;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-.deadline {
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-align: center;
-  color: #e74c3c;
-  margin-bottom: 2rem;
+.job-detail-container p strong {
+  color: #1c3550;
+  width: 140px;
+  display: inline-block;
 }
 
 .apply-button {
-  display: block;
-  width: 220px;
-  margin: 0 auto;
-  padding: 0.85rem 0;
-  font-weight: 700;
-  font-size: 1.2rem;
-  text-align: center;
-  background: linear-gradient(90deg, #3498db 0%, #2980b9 100%);
+  background-color: #1cb4c6;
+  border: none;
   color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: background 0.4s ease;
+  font-weight: 600;
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 30px auto 0;
+  width: fit-content;
+  box-shadow: 0 5px 15px rgba(28, 180, 198, 0.5);
 }
 
 .apply-button:hover {
-  background: linear-gradient(90deg, #2980b9 0%, #2471a3 100%);
-  cursor: pointer;
+  background-color: #14a1b0;
+  box-shadow: 0 8px 20px rgba(20, 161, 176, 0.7);
 }
 
-.loading,
-.error {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #555;
-  margin-top: 3rem;
+@media (max-width: 768px) {
+  .job-detail-container {
+    padding: 20px;
+    margin: 30px 15px;
+  }
+
+  .job-detail-container h2 {
+    font-size: 24px;
+  }
+
+  .job-detail-container h3 {
+    font-size: 18px;
+  }
+
+  .job-detail-container p {
+    font-size: 15px;
+  }
+
+  .apply-button {
+    padding: 10px 25px;
+    font-size: 16px;
+  }
 }

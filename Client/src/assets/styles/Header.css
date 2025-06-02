@@ -4,50 +4,66 @@
   padding: 0;
   box-sizing: border-box;
 }
-.main-content {
-    height: 87px; 
 
-
+/* Body layout to handle fixed header and footer */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Main content wrapper - this pushes content below header and above footer */
+.main-content {
+  margin-top: 87px; /* Match your header height */
+  flex: 1; /* Takes remaining space between header and footer */
+  min-height: calc(100vh - 87px); /* Ensures minimum height minus header */
+  padding-bottom: 20px; /* Optional spacing above footer */
+}
+
+/* Header Styles */
 .header {
   position: fixed;
   top: 0;
   width: 100%;
   background: rgba(13, 28, 70, 0.9);
   padding: 20px 20px;
-  box-shadow: none;
-  height: auto;
+  height: 87px; /* Fixed height for consistency */
   transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
   font-family: Arial, sans-serif;
-
-  /* Subtle glow/blurred separation */
+  box-shadow: 0 2px 8px rgba(28, 180, 198, 0.15);
   border-bottom: 1px solid rgba(28, 180, 198, 0.3);
-  box-shadow:
-    0 2px 8px rgba(28, 180, 198, 0.15),
-    0 0 10px rgba(28, 180, 198, 0.1);
 }
 
 .header.scrolled {
   background: #121e3b;
   padding: 10px 20px;
+  height: 67px; /* Reduced height when scrolled */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* Adjust main content when header is scrolled */
+.header.scrolled ~ .main-content {
+  margin-top: 67px;
+}
+
 .container {
-  max-width: 1200px;
+  background: transparent !important;
+  padding: 0 !important;
   margin: 0 auto;
+  max-width: 1200px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  font-size: 28px;
-  font-weight: bold;
-  color: #1cb4c6;
-  text-decoration: none;
-
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  display: inline-block;
 }
 
 .logo:hover {
@@ -106,7 +122,6 @@
   flex-direction: column;
   padding: 8px 0;
   pointer-events: none;
-  margin-bottom: 60px;
 }
 
 .dropdown-menu.show {
@@ -142,7 +157,6 @@
   border: none;
   color: white;
   cursor: pointer;
-
 }
 
 /* Auth Buttons */
@@ -187,84 +201,4 @@
   font-weight: 600;
   font-size: 15px;
   margin-left: 8px;
-}
-
-/* Mobile-specific styles */
-@media (max-width: 992px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #121e3b;
-    height: 100vh;
-    width: 75%;
-    max-width: 300px;
-    transform: translateX(-110%);
-    transition: transform 0.3s ease;
-    flex-direction: column;
-    padding-top: 80px;
-    overflow-y: auto;
-    z-index: 1500;
-  }
-
-  .nav.open {
-    transform: translateX(0);
-  }
-
-  .nav ul {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .nav ul li a,
-  .dropdown-toggle {
-    font-size: 18px;
-    padding: 12px 20px;
-  }
-
-  /* Dropdown menu inside mobile nav */
-  .dropdown-menu {
-    position: static;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    box-shadow: none;
-    background: transparent;
-    padding-left: 20px;
-  }
-
-  .dropdown-menu li a {
-    color: #ccc;
-    padding: 8px 0;
-  }
-
-  /* Hide desktop auth buttons on mobile */
-  .auth-buttons {
-    display: none;
-  }
-
-  /* Mobile auth buttons */
-  .mobile-auth {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 20px;
-  }
-
-  .mobile-auth .btn {
-    background-color: #1cb4c6;
-    color: white;
-    padding: 12px;
-    text-align: center;
-    border-radius: 6px;
-    font-weight: 600;
-  }
-
-  .mobile-auth .btn:hover {
-    background-color: #14a1b0;
-  }
 }

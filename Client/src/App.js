@@ -23,8 +23,7 @@ import InternshipsPage from './pages/InternshipsPage';
 import ScholarshipDetailPage from './pages/ScholarshipDetailPage.js';
 import JobDetailPage from './pages/JobDetailPage.js';
 import InternshipDetailPage from './pages/InternshipDetailsPage.js';
-
-
+import RecommendationForm from './components/RecommendationForm.js'; // Adjust the import path as necessary
 
 
 
@@ -60,6 +59,8 @@ function App() {
           <Route path="/postinternship" element={<AdminRoute><PostInternshipForm /> </AdminRoute>} />
           <Route path="/dltinternship" element={<AdminRoute><DeleteInternships /></AdminRoute>} />
           <Route path="/internships/:id" element={<InternshipDetailPage />} />
+          {/* <Route path="recomendationLanding" element={<RecommendationLanding />} /> */}
+          <Route path="/recomendationForm" element={<RecommendationForm />} />
            
 
 
