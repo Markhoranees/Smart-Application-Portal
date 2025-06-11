@@ -9,10 +9,19 @@ import adminRoutes from './routes/adminRoutes.js';
 import applicationRoutes from './routes/applicationRoutes.js';  // <-- Import apply route
 import path from 'path';
 import admin from './middlewares/admin.js';
-
 import userRoutes from './routes/userRoutes.js'; // Import user routes
 
+// Load environment variables
 dotenv.config();
+
+// Ensure required environment variables are set
+const requiredEnvVars = ['CLERK_PUBLISHABLE_KEY', 'CLERK_SECRET_KEY'];
+for (const envVar of requiredEnvVars) {
+  if (!process.env[envVar]) {
+    console.error(`Error: ${envVar} is not set in environment variables`);
+    process.exit(1);
+  }
+}
 
 const app = express();
 
@@ -33,15 +42,13 @@ const app = express();
     // Serve static files from uploads folder
     app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
-
-app.use("/api/userinfo", userRoutes); // Integrating user routes
+    app.use("/api/userinfo", userRoutes); // Integrating user routes
     // API Routes
     app.use('/api/jobs', JobRoutes);
     app.use('/api/scholarships', ScholarshipRoutes);
     app.use('/api/internships', InternshipRoutes);
 
     app.use('/api/applications', applicationRoutes);   // <-- Apply route with multer upload
-
 
     app.use('/api/admin', admin, adminRoutes);
 

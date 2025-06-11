@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/clerk-react";
+import { useUser, useAuth } from "@clerk/clerk-react";
 import axios from "axios";
 import "../assets/styles/UserDashboard.css"; // Import your custom CSS for styling
 
 const UserDashboard = () => {
-  const { user, isLoaded } = useUser(); 
+  const { user, isLoaded } = useUser();
+  const { getToken } = useAuth();
   const [userDetails, setUserDetails] = useState({
     firstName: "",
     lastName: "",
@@ -22,18 +23,22 @@ const UserDashboard = () => {
   const [isEditMode, setIsEditMode] = useState(false);  // To toggle between view and edit mode
 
   useEffect(() => {
-    if (isLoaded && user) {
-      axios
-        .get("http://localhost:5000/api/userinfo/profile", {
-          headers: { Authorization: `Bearer ${user.sessionId}` },
-        })
-        .then((response) => {
+    const fetchProfile = async () => {
+      if (isLoaded && user) {
+        try {
+          const token = await getToken();
+          const response = await axios.get("http://localhost:5000/api/userinfo/profile", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
           setUserDetails(response.data);
-          setCvUploaded(!!response.data.cvUrl); // Check if CV exists
-        })
-        .catch((error) => console.error("Error fetching profile:", error));
-    }
-  }, [isLoaded, user]);
+          setCvUploaded(!!response.data.cvUrl);
+        } catch (error) {
+          console.error("Error fetching profile:", error);
+        }
+      }
+    };
+    fetchProfile();
+  }, [isLoaded, user, getToken]);
 
   // Handle form field changes
   const handleChange = (e) => {
@@ -55,16 +60,18 @@ const UserDashboard = () => {
     e.preventDefault();
 
     try {
+      userDetails.email = user.emailAddresses[0].emailAddress;
+      const token = await getToken();
       const response = await axios.put(
         "http://localhost:5000/api/userinfo/update-profile",
         userDetails,
         {
-          headers: { Authorization: `Bearer ${user.sessionId}` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
       if (response.status === 200) {
-        setIsEditMode(false); // Exit edit mode after successful update
+        setIsEditMode(false);
       }
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -79,12 +86,13 @@ const UserDashboard = () => {
     formData.append("cvFile", cvFile);
 
     try {
+      const token = await getToken();
       const response = await axios.post(
         "http://localhost:5000/api/userinfo/upload-cv",
         formData,
         {
           headers: {
-            Authorization: `Bearer ${user.sessionId}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
