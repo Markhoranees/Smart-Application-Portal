@@ -24,47 +24,47 @@ const ApplicationForm = ({ category, appliedForId }) => {
   const [files, setFiles] = useState({ cvFile: null, additionalFiles: [] });
 
   const handleChange = (e) => {
-  const { name, value } = e.target;
+    const { name, value } = e.target;
 
-  if (
-    name === "educationLevel" ||
-    name === "educationField" ||
-    name === "educationInstitution" ||
-    name === "educationGraduationYear"
-  ) {
-    // Map the input name to the exact key in education state
-    let key = "";
-    switch(name) {
-      case "educationLevel":
-        key = "level";
-        break;
-      case "educationField":
-        key = "field";
-        break;
-      case "educationInstitution":
-        key = "institution";
-        break;
-      case "educationGraduationYear":
-        key = "graduationYear";
-        break;
-      default:
-        key = name;
+    if (
+      name === "educationLevel" ||
+      name === "educationField" ||
+      name === "educationInstitution" ||
+      name === "educationGraduationYear"
+    ) {
+      // Map the input name to the exact key in education state
+      let key = "";
+      switch(name) {
+        case "educationLevel":
+          key = "level";
+          break;
+        case "educationField":
+          key = "field";
+          break;
+        case "educationInstitution":
+          key = "institution";
+          break;
+        case "educationGraduationYear":
+          key = "graduationYear";
+          break;
+        default:
+          key = name;
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        education: {
+          ...prev.education,
+          [key]: value,
+        },
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
-
-    setFormData((prev) => ({
-      ...prev,
-      education: {
-        ...prev.education,
-        [key]: value,
-      },
-    }));
-  } else {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-};
+  };
 
   // File input handler
   const handleFileChange = (e) => {
@@ -90,8 +90,6 @@ const ApplicationForm = ({ category, appliedForId }) => {
     if (!level || !field || !institution || !graduationYear) {
       return alert("Please fill all required education fields.");
     }
-
-    const token = await getToken();
 
     const form = new FormData();
     form.append("category", category);
@@ -123,6 +121,7 @@ const ApplicationForm = ({ category, appliedForId }) => {
     );
 
     try {
+      const token = await getToken();
       await axios.post("http://localhost:5000/api/applications", form, {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -3,28 +3,25 @@ import { Clerk } from '@clerk/clerk-sdk-node';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const clerk = new Clerk({  });
+const clerk = new Clerk({ apiKey: process.env.CLERK_PUBLISHABLE_KEY });
 
 const adminOnly = async (req, res, next) => {
   try {
-    // Extract session ID from header or cookie (adjust according to your setup)
-    const sessionToken = req.headers.authorization?.replace('Bearer ', '') || req.cookies?.__session;
-
-    if (!sessionToken) {
+    const { userId } = await req.auth();
+    if (!userId) {
       return res.status(401).json({ message: 'Authentication required' });
     }
 
-    const session = await clerk.sessions.verifySessionToken(sessionToken);
-    const user = await clerk.users.getUser(session.userId);
-
+    const user = await clerk.users.getUser(userId);
     if (user.publicMetadata?.role !== 'admin') {
       return res.status(403).json({ message: 'Access denied: Admins only' });
     }
 
-    // Attach user or session info to request if needed
+    // Attach user info to request if needed
     req.user = user;
     next();
   } catch (err) {
+    console.error('Admin middleware error:', err);
     return res.status(401).json({ message: 'Invalid or expired session' });
   }
 };

@@ -8,7 +8,7 @@ import Internship from "../models/Internship.js"; // Assuming Internship model f
 import Scholarship from "../models/Scholarship.js"; // Assuming Scholarship model for scholarship listings
 
 dotenv.config();
-const GEMINI_API_KEY = AIzaSyBXI-s8XSwlkKZrqtGz06p-y20AlDTbQ9A;
+const GEMINI_API_KEY = "AIzaSyBXI-s8XSwlkKZrqtGz06p-y20AlDTbQ9A";
 
 export const getRecommendations = async (req, res) => {
   try {
