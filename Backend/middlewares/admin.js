@@ -3,7 +3,7 @@ import { Clerk } from '@clerk/clerk-sdk-node';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const clerk = new Clerk({ apiKey: process.env.CLERK_PUBLISHABLE_KEY });
+const clerk = new Clerk({  });
 
 const adminOnly = async (req, res, next) => {
   try {
