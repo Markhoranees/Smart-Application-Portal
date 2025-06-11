@@ -27,9 +27,10 @@ const PostJobForm = () => {
       formData.append("company", data.company);
       formData.append("location", data.location || "");
       formData.append("onsite", data.onsite ? "true" : "false");
-      formData.append("category", data.category);
-      formData.append("skillsRequired", data.skillsRequired);
+      formData.append("jobCategory", data.jobCategory); // changed here
+      formData.append("skillsRequired", data.skillsRequired); // changed here
       formData.append("salary", data.salary || "");
+      formData.append("experienceLevel", data.experienceLevel || ""); // added experienceLevel
       formData.append("description", data.description);
       formData.append("email", data.email);
       formData.append("closingDate", data.closingDate || "");
@@ -137,23 +138,23 @@ const PostJobForm = () => {
             </label>
           </div>
 
-          {/* Category */}
+          {/* Job Category */}
           <div className="mb-3">
             <label className="form-label">
-              Category <span className="required">*</span>
+              Job Category <span className="required">*</span>
             </label>
             <select
-              className={`form-select ${errors.category ? "is-invalid" : ""}`}
-              {...register("category", { required: "Category is required" })}
+              className={`form-select ${errors.jobCategory ? "is-invalid" : ""}`}
+              {...register("jobCategory", { required: "Job category is required" })}
               disabled={loading}
             >
-              <option value="">Select category</option>
+              <option value="">Select job category</option>
               <option value="full-time">Full-time</option>
               <option value="part-time">Part-time</option>
               <option value="contract">Contract</option>
             </select>
-            {errors.category && (
-              <div className="invalid-feedback">{errors.category.message}</div>
+            {errors.jobCategory && (
+              <div className="invalid-feedback">{errors.jobCategory.message}</div>
             )}
           </div>
 
@@ -164,9 +165,7 @@ const PostJobForm = () => {
             </label>
             <input
               type="text"
-              className={`form-control ${
-                errors.skillsRequired ? "is-invalid" : ""
-              }`}
+              className={`form-control ${errors.skillsRequired ? "is-invalid" : ""}`}
               {...register("skillsRequired", {
                 required: "Skills are required",
               })}
@@ -176,6 +175,21 @@ const PostJobForm = () => {
             {errors.skillsRequired && (
               <div className="invalid-feedback">{errors.skillsRequired.message}</div>
             )}
+          </div>
+
+          {/* Experience Level */}
+          <div className="mb-3">
+            <label className="form-label">Experience Level</label>
+            <select
+              className="form-select"
+              {...register("experienceLevel")}
+              disabled={loading}
+            >
+              <option value="">Select experience level</option>
+              <option value="entry-level">Entry-level</option>
+              <option value="mid-level">Mid-level</option>
+              <option value="senior-level">Senior-level</option>
+            </select>
           </div>
 
           {/* Salary */}

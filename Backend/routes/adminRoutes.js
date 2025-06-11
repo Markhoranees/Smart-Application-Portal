@@ -20,6 +20,7 @@ router.get('/internships', admin, getAllInternships);
 router.post('/internships', admin, createInternship);
 router.delete('/internships/:id', admin, deleteInternshipById);
 
+
 // Scholarships Routes
 router.get('/scholarships', admin, getAllScholarships);
 router.post('/scholarships', admin, createScholarship);

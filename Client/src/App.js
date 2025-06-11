@@ -24,7 +24,7 @@ import ScholarshipDetailPage from './pages/ScholarshipDetailPage.js';
 import JobDetailPage from './pages/JobDetailPage.js';
 import InternshipDetailPage from './pages/InternshipDetailsPage.js';
 import RecommendationForm from './components/RecommendationForm.js'; // Adjust the import path as necessary
-
+import UserDashboard from "./components/UserDashboard.js";
 
 
 function App() {
@@ -46,6 +46,7 @@ function App() {
           <Route path="/dltjob" element={<AdminRoute><JobsDelete /></AdminRoute>} />
           <Route path="/postjob" element={<AdminRoute><PostJobForm /></AdminRoute>} />
           <Route path="/jobs/:id" element={<JobDetailPage />} />
+          <Route path="/userdashboard" element={<UserDashboard />} />
          
 
 

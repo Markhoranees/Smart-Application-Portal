@@ -6,8 +6,8 @@ const JobSchema = new mongoose.Schema({
   location: { type: String ,required: true },
   onsite: { type: Boolean, default: false , required: true }, 
  
-  category: { type: String,  enum: ["full-time", "part-time", "contract", ] },
-skillsRequired: { type: [String], required: true },
+  jobCategory: { type: String,  enum: ["full-time", "part-time", "contract", ] },
+skills: { type: [String], required: true },
   educationLevel: { type: String }, // e.g., Bachelor, Master
   educationField: { type: String }, // e.g., Computer Science, Engineering
   salary: { type: String ,required: true }, 

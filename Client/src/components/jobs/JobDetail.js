@@ -33,8 +33,8 @@ const JobDetail = () => {
       <h2>{job.title}</h2>
       <h3>{job.company}</h3>
       <p><strong>Location:</strong> {job.location}</p>
-      <p><strong>Category:</strong> {job.category}</p>
-      <p><strong>Skills Required:</strong> {job.skillsRequired}</p>
+      <p><strong>Category:</strong> {job.jobCategory}</p>
+      <p><strong>Skills Required:</strong> {job.skills}</p>
       <p><strong>Description:</strong> {job.description}</p>
       <p><strong>Salary:</strong> {job.salary}</p>
       <p><strong>Closing Date:</strong> {new Date(job.closingDate).toLocaleDateString()}</p>
@@ -47,3 +47,5 @@ const JobDetail = () => {
 };
 
 export default JobDetail;
+
+

@@ -11,6 +11,7 @@ const JobsDelete = () => {
   const [deletingId, setDeletingId] = useState(null);
   const navigate = useNavigate();
 
+
   useEffect(() => {
     const loadJobs = async () => {
       try {

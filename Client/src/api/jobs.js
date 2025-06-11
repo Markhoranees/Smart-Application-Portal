@@ -15,6 +15,7 @@ export const fetchJobDetails = async (id) => {
 };
 
 
+
 export const createJob = async (jobData) => {
   // jobData should be FormData instance
   const res = await fetch(API_URL, {

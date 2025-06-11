@@ -10,3 +10,9 @@ router.post("/", upload.single("image"), createJob);
 router.delete("/:id", deleteJobById);
 router.get("/:id", getJobById);
 export default router;
+
+
+
+
+
+
