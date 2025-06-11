@@ -2,13 +2,13 @@ import axios from "axios";
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
-import User from "../model/userModel.js"; // Assuming there's a User model for user details
-import Job from "../model/jobModel.js"; // Assuming Job model for job listings
-import Internship from "../model/internshipModel.js"; // Assuming Internship model for internship listings
-import Scholarship from "../model/scholarshipModel.js"; // Assuming Scholarship model for scholarship listings
+import User from "../models/User.js"; // Assuming there's a User model for user details
+import Job from "../models/Job.js"; // Assuming Job model for job listings
+import Internship from "../models/Internship.js"; // Assuming Internship model for internship listings
+import Scholarship from "../models/Scholarship.js"; // Assuming Scholarship model for scholarship listings
 
 dotenv.config();
-const GEMINI_API_KEY = AIzaSyBXI-s8XSwlkKZrqtGz06p-y20AlDTbQ9A;
+const GEMINI_API_KEY = "AIzaSyBXI-s8XSwlkKZrqtGz06p-y20AlDTbQ9A";
 
 export const getRecommendations = async (req, res) => {
   try {
